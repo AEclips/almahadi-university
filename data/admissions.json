@@ -1,0 +1,24 @@
+[
+  {
+    "id": "APP-MW8LP8KY",
+    "name": "QA Automated Test User",
+    "email": "qatest@diu-test.edu",
+    "phone": "01899001122",
+    "program": "B.Sc. in Software Engineering",
+    "sscGpa": 5,
+    "hscGpa": 4.9,
+    "status": "Submitted",
+    "createdAt": "2026-11-09T01:47:03.730Z"
+  },
+  {
+    "id": "APP-MW8KCTEJ",
+    "name": "Rahim Chowdhury",
+    "email": "rahim@example.com",
+    "phone": "01711223344",
+    "program": "B.Sc. in CSE",
+    "sscGpa": 5,
+    "hscGpa": 5,
+    "status": "Submitted",
+    "createdAt": "2026-11-09T01:09:24.571Z"
+  }
+]

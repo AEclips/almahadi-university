@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Ultra-Luxurious Royal Gold Gradient -->
+    <linearGradient id="amiuGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff176" />
+      <stop offset="25%" stop-color="#ffd54f" />
+      <stop offset="50%" stop-color="#ffb300" />
+      <stop offset="75%" stop-color="#f57f17" />
+      <stop offset="100%" stop-color="#ff8f00" />
+    </linearGradient>
+
+    <!-- Deep Emerald & Cyan Futuristic Core Gradient -->
+    <linearGradient id="emeraldCore" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#022c22" />
+      <stop offset="50%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <!-- Dark Architectural Shield Base -->
+    <linearGradient id="shieldDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f" />
+      <stop offset="50%" stop-color="#071324" />
+      <stop offset="100%" stop-color="#020814" />
+    </linearGradient>
+
+    <!-- Precision Drop Shadow -->
+    <filter id="eliteGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.7" />
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#f59e0b" flood-opacity="0.35" />
+    </filter>
+
+    <filter id="subtleAura" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- ================= 1. THE ARCHITECTURAL NEOCREST SHIELD ================= -->
+  <g filter="url(#eliteGlow)">
+    <!-- Base Outer Shield -->
+    <path d="M 250 35 
+             C 365 35 435 75 435 185 
+             C 435 320 250 440 250 460 
+             C 250 440 65 320 65 185 
+             C 65 75 135 35 250 35 Z" 
+          fill="url(#shieldDark)" 
+          stroke="url(#amiuGold)" 
+          stroke-width="5" />
+
+    <!-- Thin Golden Framing Inset -->
+    <path d="M 250 52 
+             C 345 52 415 88 415 185 
+             C 415 305 250 415 250 432 
+             C 250 415 85 305 85 185 
+             C 85 88 155 52 250 52 Z" 
+          fill="none" 
+          stroke="url(#amiuGold)" 
+          stroke-width="1.5" 
+          stroke-dasharray="8 6" 
+          opacity="0.6" />
+  </g>
+
+  <!-- ================= 2. THE GEOMETRIC APEX MONOGRAM 'M' ================= -->
+  <!-- Designed with pure golden-ratio angles symbolizing modern computing & academic ascension -->
+  <g transform="translate(0, 5)" filter="url(#subtleAura)">
+    <!-- Left Ascending Pillar -->
+    <polygon points="120,320 165,320 165,165 120,165" 
+             fill="url(#amiuGold)" />
+
+    <!-- Right Ascending Pillar -->
+    <polygon points="335,320 380,320 380,165 335,165" 
+             fill="url(#amiuGold)" />
+
+    <!-- Left Angular Convergence Wing -->
+    <polygon points="165,165 210,165 250,250 205,250" 
+             fill="url(#amiuGold)" />
+
+    <!-- Right Angular Convergence Wing -->
+    <polygon points="335,165 290,165 250,250 295,250" 
+             fill="url(#amiuGold)" />
+
+    <!-- Central Diamond Apex (The Nucleus of Knowledge) -->
+    <polygon points="250,150 270,185 250,220 230,185" 
+             fill="#ffffff" 
+             filter="url(#subtleAura)" />
+  </g>
+
+  <!-- ================= 3. THE TORCH FLAME OF INNOVATION (TOP APEX) ================= -->
+  <g transform="translate(250, 105)">
+    <!-- Outer Core Flame -->
+    <path d="M 0 -42 C 14 -28 16 -12 8 0 C 0 -12 -6 -12 -8 0 C -16 -12 -14 -28 0 -42 Z" 
+          fill="url(#amiuGold)" />
+    <!-- White Hot Center -->
+    <path d="M 0 -32 C 6 -22 6 -8 3 0 C 0 -8 -3 -8 -3 0 C -6 -8 -6 -22 0 -32 Z" 
+          fill="#ffffff" />
+  </g>
+
+  <!-- ================= 4. MODERNIST OPEN BOOK (FOUNDATION SPREAD) ================= -->
+  <g transform="translate(250, 325)">
+    <!-- Left Open Page Wing -->
+    <path d="M -8 15 C -45 0 -85 5 -105 18 L -105 38 C -85 25 -45 20 -8 35 Z" 
+          fill="url(#emeraldCore)" 
+          stroke="url(#amiuGold)" 
+          stroke-width="2" />
+    <!-- Right Open Page Wing -->
+    <path d="M 8 15 C 45 0 85 5 105 18 L 105 38 C 85 25 45 20 8 35 Z" 
+          fill="url(#emeraldCore)" 
+          stroke="url(#amiuGold)" 
+          stroke-width="2" />
+    
+    <!-- Central Spine Dot -->
+    <circle cx="0" cy="25" r="4" fill="url(#amiuGold)" />
+  </g>
+
+  <!-- ================= 5. FOUNDATION BANNER & LATIN MOTTO ================= -->
+  <!-- Modern clean ribbon curve -->
+  <g transform="translate(250, 395)">
+    <!-- Banner Plate -->
+    <rect x="-115" y="-12" width="230" height="24" rx="12" 
+          fill="url(#amiuGold)" 
+          stroke="#78350f" 
+          stroke-width="1.5" />
+    
+    <!-- Motto Typography -->
+    <text x="0" y="4" 
+          font-family="-apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif" 
+          font-size="10.5" 
+          font-weight="900" 
+          letter-spacing="3" 
+          fill="#071324" 
+          text-anchor="middle">VERITAS • EXCELLENTIA</text>
+  </g>
+
+  <!-- Founding Year Seal -->
+  <text x="250" y="430" 
+        font-family="-apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="10" 
+        font-weight="800" 
+        letter-spacing="5" 
+        fill="#fbbf24" 
+        text-anchor="middle">EST. 2026</text>
+</svg>

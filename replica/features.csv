@@ -1,0 +1,11 @@
+feature_id,name,flow,status,priority
+F01,Global Multi-tier Navbar & Mega Menu,Navigation,tested,must
+F02,Hero Banner with Admission CTA,Landing,tested,must
+F03,Stats Counter & Campus Overview,Landing,tested,should
+F04,Faculty & Academic Programs Directory,Academics,tested,must
+F05,Notice Board with Category Filters & Search,Notices,tested,must
+F06,News & Events Carousel,Media,recon,should
+F07,Online Admission Application Form Flow,Admission,tested,must
+F08,Tuition Fee Calculator & Breakdown Table,Admission,tested,should
+F09,Department & Faculty Profile Cards,Academics,recon,could
+F10,Global Footer with Accreditation & Campus Links,Navigation,tested,must
