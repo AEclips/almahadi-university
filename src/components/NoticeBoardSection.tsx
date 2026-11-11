@@ -15,6 +15,14 @@ interface Notice {
 export function NoticeBoardSection() {
   const [activeTab, setActiveTab] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [downloadNotice, setDownloadNotice] = useState<string>("");
+
+  const handleNoticeDownload = (id: string, title: string) => {
+    setDownloadNotice(`Downloading circular: ${id} - "${title.slice(0, 35)}..."`);
+    setTimeout(() => {
+      setDownloadNotice("");
+    }, 3500);
+  };
 
   const notices: Notice[] = [
     {
@@ -93,6 +101,13 @@ export function NoticeBoardSection() {
           </div>
         </div>
 
+        {downloadNotice && (
+          <div className="mb-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 text-xs font-bold flex items-center justify-between shadow-sm">
+            <span>📄 {downloadNotice}</span>
+            <span className="text-[10px] text-emerald-600 uppercase tracking-widest font-mono">PDF Generated</span>
+          </div>
+        )}
+
         {/* Category Tabs */}
         <div className="flex flex-wrap gap-2 mb-8">
           {categories.map((cat) => (
@@ -144,7 +159,10 @@ export function NoticeBoardSection() {
                 </div>
 
                 <div className="flex items-center gap-3 self-end sm:self-center">
-                  <button className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-diu-green border border-slate-200 rounded-lg px-3 py-2 bg-white shadow-2xl transition">
+                  <button 
+                    onClick={() => handleNoticeDownload(notice.id, notice.title)}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-emerald-700 hover:border-emerald-300 border border-slate-200 rounded-lg px-3 py-2 bg-white shadow-sm transition active:scale-95"
+                  >
                     <Download className="w-3.5 h-3.5" />
                     <span>Download PDF</span>
                   </button>

@@ -4,13 +4,14 @@ import React, { useState } from "react";
 import { TopUtilityBar, Footer } from "@/components/DiuComponents";
 import { 
   GraduationCap, BookOpen, Clock, Calendar, CheckCircle2, AlertCircle, 
-  ArrowLeft, FileText, User, Bell, Download, ShieldCheck, DollarSign
+  ArrowLeft, FileText, User, Bell, Download, ShieldCheck, DollarSign, Award, Check
 } from "lucide-react";
 import Link from "next/link";
 
 export default function StudentPortalDemo() {
-  const [studentId, setStudentId] = useState("261-15-9988");
+  const [studentId] = useState("261-15-9988");
   const [activeTab, setActiveTab] = useState("courses");
+  const [downloadMsg, setDownloadMsg] = useState("");
 
   const enrolledCourses = [
     { code: "CSE-411", title: "Advanced Artificial Intelligence & Neural Nets", credits: 3.0, section: "60_A", grade: "A+", faculty: "Dr. Al Mahadi" },
@@ -18,6 +19,21 @@ export default function StudentPortalDemo() {
     { code: "CSE-412", title: "Deep Learning & Computer Vision Lab", credits: 1.5, section: "60_A1", grade: "A+", faculty: "Dr. Nusrat Jahan" },
     { code: "FER-302", title: "Robotics Kinematics & Embedded Firmware", credits: 3.0, section: "60_R", grade: "A-", faculty: "Dr. Tariqul Islam" },
   ];
+
+  const gradeHistory = [
+    { semester: "Spring 2026 (Ongoing)", gpa: "3.98 (Projected)", credits: 10.5, status: "Registered" },
+    { semester: "Fall 2025", gpa: "4.00", credits: 15.0, status: "Dean's Honors List" },
+    { semester: "Summer 2025", gpa: "3.96", credits: 12.0, status: "Chancellor's Honor" },
+    { semester: "Spring 2025", gpa: "3.98", credits: 15.0, status: "Dean's Honors List" },
+  ];
+
+  const handleDownload = () => {
+    setDownloadMsg("Generating encrypted official PDF admit card...");
+    setTimeout(() => {
+      setDownloadMsg("Official Admit Card (Spring 2026 Final) downloaded successfully!");
+      setTimeout(() => setDownloadMsg(""), 4000);
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100 font-sans">
@@ -72,6 +88,13 @@ export default function StudentPortalDemo() {
           </div>
         </div>
 
+        {downloadMsg && (
+          <div className="mb-6 p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            {downloadMsg}
+          </div>
+        )}
+
         {/* Portal Nav Tabs */}
         <div className="flex space-x-2 border-b border-white/10 pb-4 mb-8">
           {[
@@ -93,50 +116,106 @@ export default function StudentPortalDemo() {
           ))}
         </div>
 
-        {/* Courses Table */}
-        <div className="bg-slate-800/70 border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
-          <div className="p-6 border-b border-white/10 flex justify-between items-center">
-            <div>
-              <h3 className="text-lg font-bold text-white">Spring 2026 Academic Course Registration</h3>
-              <p className="text-xs text-slate-400">Total Enrolled Credits: 10.5 | Semester: 12th (Graduation Candidate)</p>
+        {/* Courses Tab */}
+        {activeTab === "courses" && (
+          <div className="bg-slate-800/70 border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="p-6 border-b border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div>
+                <h3 className="text-lg font-bold text-white">Spring 2026 Academic Course Registration</h3>
+                <p className="text-xs text-slate-400">Total Enrolled Credits: 10.5 | Semester: 12th (Graduation Candidate)</p>
+              </div>
+              <button 
+                onClick={handleDownload}
+                className="flex items-center gap-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl transition shadow-lg"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download Admit Card
+              </button>
             </div>
-            <button className="flex items-center gap-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl transition shadow-lg">
-              <Download className="w-3.5 h-3.5" />
-              Download Admit Card
-            </button>
-          </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider text-[10px] border-b border-white/10">
-                <tr>
-                  <th className="py-4 px-6">Course Code</th>
-                  <th className="py-4 px-6">Course Title</th>
-                  <th className="py-4 px-6">Section</th>
-                  <th className="py-4 px-6">Credits</th>
-                  <th className="py-4 px-6">Instructor</th>
-                  <th className="py-4 px-6">Progress</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5 text-slate-300">
-                {enrolledCourses.map((c, i) => (
-                  <tr key={i} className="hover:bg-slate-700/30 transition">
-                    <td className="py-4 px-6 font-mono font-bold text-amber-400">{c.code}</td>
-                    <td className="py-4 px-6 font-semibold text-white">{c.title}</td>
-                    <td className="py-4 px-6">{c.section}</td>
-                    <td className="py-4 px-6 font-bold">{c.credits}</td>
-                    <td className="py-4 px-6 text-slate-400">{c.faculty}</td>
-                    <td className="py-4 px-6">
-                      <span className="text-[10px] font-black uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded">
-                        Mid-Term: {c.grade}
-                      </span>
-                    </td>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider text-[10px] border-b border-white/10">
+                  <tr>
+                    <th className="py-4 px-6">Course Code</th>
+                    <th className="py-4 px-6">Course Title</th>
+                    <th className="py-4 px-6">Section</th>
+                    <th className="py-4 px-6">Credits</th>
+                    <th className="py-4 px-6">Instructor</th>
+                    <th className="py-4 px-6">Progress</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-white/5 text-slate-300">
+                  {enrolledCourses.map((c, i) => (
+                    <tr key={i} className="hover:bg-slate-700/30 transition">
+                      <td className="py-4 px-6 font-mono font-bold text-amber-400">{c.code}</td>
+                      <td className="py-4 px-6 font-semibold text-white">{c.title}</td>
+                      <td className="py-4 px-6">{c.section}</td>
+                      <td className="py-4 px-6 font-bold">{c.credits}</td>
+                      <td className="py-4 px-6 text-slate-400">{c.faculty}</td>
+                      <td className="py-4 px-6">
+                        <span className="text-[10px] font-black uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded">
+                          Mid-Term: {c.grade}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* Grades Tab */}
+        {activeTab === "grades" && (
+          <div className="bg-slate-800/70 border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-6 sm:p-8">
+            <h3 className="text-lg font-bold text-white mb-2">Official Academic Transcript & Semester Grade History</h3>
+            <p className="text-xs text-slate-400 mb-6">Cumulative Grade Point Average (CGPA): 3.98 / 4.00 | Standing: Top 1% of Graduating Class</p>
+            <div className="space-y-4">
+              {gradeHistory.map((g, idx) => (
+                <div key={idx} className="flex items-center justify-between p-4 bg-slate-900/80 rounded-2xl border border-white/5">
+                  <div className="flex items-center gap-3">
+                    <Award className="w-5 h-5 text-amber-400" />
+                    <div>
+                      <h4 className="text-sm font-bold text-white">{g.semester}</h4>
+                      <p className="text-xs text-slate-400">{g.credits} Credits Completed</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-base font-black text-emerald-400 font-mono">GPA {g.gpa}</span>
+                    <p className="text-[10px] text-amber-400 font-semibold">{g.status}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Accounts Tab */}
+        {activeTab === "accounts" && (
+          <div className="bg-slate-800/70 border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-6 sm:p-8">
+            <h3 className="text-lg font-bold text-white mb-2">Financial Accounts & 100% Chairman's Merit Scholarship</h3>
+            <p className="text-xs text-slate-400 mb-6">All academic and lab dues are currently settled. Zero outstanding balance.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-slate-900/80 rounded-2xl border border-white/5">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Scholarship Status</span>
+                <h4 className="text-xl font-black text-amber-400 mt-2">100% Tuition Waiver</h4>
+                <p className="text-xs text-slate-300 mt-1">Conferred under AMIU Chancellor's Global Excellence Quota.</p>
+                <div className="mt-4 flex items-center gap-2 text-xs text-emerald-400 font-bold">
+                  <CheckCircle2 className="w-4 h-4" /> Valid through final graduation semester
+                </div>
+              </div>
+              <div className="p-6 bg-slate-900/80 rounded-2xl border border-white/5">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Current Balance</span>
+                <h4 className="text-xl font-black text-emerald-400 mt-2">৳ 0.00 Outstanding</h4>
+                <p className="text-xs text-slate-300 mt-1">Last payment verified: 15 January 2026 via AMIU Online Gateway</p>
+                <div className="mt-4 flex items-center gap-2 text-xs text-slate-400">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" /> Digital Clearance Approved
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
