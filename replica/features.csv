@@ -4,8 +4,13 @@ F02,Hero Banner with Admission CTA,Landing,tested,must
 F03,Stats Counter & Campus Overview,Landing,tested,should
 F04,Faculty & Academic Programs Directory,Academics,tested,must
 F05,Notice Board with Category Filters & Search,Notices,tested,must
-F06,News & Events Carousel,Media,recon,should
+F06,News & Events Carousel & Seat RSVP,Media,built,should
 F07,Online Admission Application Form Flow,Admission,tested,must
 F08,Tuition Fee Calculator & Breakdown Table,Admission,tested,should
-F09,Department & Faculty Profile Cards,Academics,recon,could
+F09,Faculty 1-on-1 Office Hours Booking,Academics,built,could
 F10,Global Footer with Accreditation & Campus Links,Navigation,tested,must
+F11,AI Smart Admissions & Campus Advisor Chatbot,Assistant,built,should
+F12,Live Campus Shuttle Tracker & Pass Booking,Campus,built,should
+F13,Digital Research Paper Archive & BibTeX Reader,Academics,built,should
+F14,Global Alumni Network & Career Placement Portal,Careers,built,should
+F15,"ERP Online Fee Gateway, Course Add/Drop & Theme Toggle",Portal,built,must

@@ -6,10 +6,11 @@ import { TopUtilityBar, HeroBanner, StatsTicker, Footer } from "@/components/Diu
 import { TuitionWaiverCalculator } from "@/components/TuitionWaiverCalculator";
 import { OnlineAdmissionModal } from "@/components/OnlineAdmissionModal";
 import { NoticeBoardSection } from "@/components/NoticeBoardSection";
+import { EventsCarouselSection } from "@/components/EventsCarouselSection";
 import { 
-  ArrowRight, BookOpen, Clock, Building2, CheckCircle2, Award, Sparkles, 
-  Compass, ShieldAlert, Cpu, Laptop, Briefcase, ChevronRight, Play, ExternalLink,
-  Flame, Microscope, Network, Globe2, GraduationCap, Building, Star, Bell, Users
+  ArrowRight, BookOpen, Clock, Building2, Award, Sparkles, 
+  Compass, Cpu, Laptop, Briefcase, Play,
+  Globe2, Building, Bell, Users, Bus, Calendar
 } from "lucide-react";
 
 export default function Home() {
@@ -99,45 +100,55 @@ export default function Home() {
         </div>
 
         {/* SECOND LINE: Full-Width Clean Navigation Bar (No scrollbar, perfectly distributed) */}
-        <div className="bg-[#040e18]/80 border-t border-white/5 py-3.5">
+        <div className="bg-[#040e18]/80 border-t border-white/5 py-3">
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
-            <nav className="flex items-center justify-between text-xs font-black uppercase tracking-[0.16em] text-slate-300 w-full">
+            <nav aria-label="Main Navigation" className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-black uppercase tracking-[0.14em] text-slate-300 w-full">
               <Link 
                 href="/campus" 
-                className="hover:text-emerald-400 transition flex items-center gap-2.5 py-1.5 px-3 rounded-xl hover:bg-white/5 group"
+                className="hover:text-emerald-400 transition flex items-center gap-2 py-1.5 px-2.5 rounded-xl hover:bg-white/5 group"
               >
-                <Building2 className="w-5 h-5 text-emerald-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="leading-none pt-0.5">Smart Green Campus</span>
+                <Building2 className="w-4 h-4 text-emerald-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span>Campus &amp; Shuttles</span>
               </Link>
-
-              <span className="text-white/10">•</span>
 
               <Link 
                 href="/faculty" 
-                className="hover:text-sky-400 transition flex items-center gap-2.5 py-1.5 px-3 rounded-xl hover:bg-white/5 group"
+                className="hover:text-sky-400 transition flex items-center gap-2 py-1.5 px-2.5 rounded-xl hover:bg-white/5 group"
               >
-                <Users className="w-5 h-5 text-sky-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="leading-none pt-0.5">Faculty Directory & Research</span>
+                <Users className="w-4 h-4 text-sky-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span>Faculty &amp; Research</span>
               </Link>
 
-              <span className="text-white/10">•</span>
+              <a 
+                href="#events" 
+                className="hover:text-amber-300 transition flex items-center gap-2 py-1.5 px-2.5 rounded-xl hover:bg-white/5 group"
+              >
+                <Calendar className="w-4 h-4 text-amber-300 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span>Events &amp; Forums</span>
+              </a>
+
+              <Link 
+                href="/alumni" 
+                className="hover:text-teal-300 transition flex items-center gap-2 py-1.5 px-2.5 rounded-xl hover:bg-white/5 group"
+              >
+                <Briefcase className="w-4 h-4 text-teal-300 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span>Alumni Network</span>
+              </Link>
 
               <a 
                 href="#calculator" 
-                className="hover:text-amber-400 transition flex items-center gap-2.5 py-1.5 px-3 rounded-xl hover:bg-white/5 group"
+                className="hover:text-amber-400 transition flex items-center gap-2 py-1.5 px-2.5 rounded-xl hover:bg-white/5 group"
               >
-                <Award className="w-5 h-5 text-amber-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="leading-none pt-0.5">Scholarships & Aid</span>
+                <Award className="w-4 h-4 text-amber-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span>Scholarships</span>
               </a>
-
-              <span className="text-white/10">•</span>
 
               <a 
                 href="#notice" 
-                className="hover:text-rose-400 transition flex items-center gap-2.5 py-1.5 px-3 rounded-xl hover:bg-white/5 group"
+                className="hover:text-rose-400 transition flex items-center gap-2 py-1.5 px-2.5 rounded-xl hover:bg-white/5 group"
               >
-                <Bell className="w-5 h-5 text-rose-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="leading-none pt-0.5">Official Circulars</span>
+                <Bell className="w-4 h-4 text-rose-400 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span>Circulars</span>
               </a>
             </nav>
           </div>
@@ -168,13 +179,20 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-3">
                 <Link 
                   href="/campus"
                   className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs px-5 py-3 rounded-xl transition flex items-center gap-2"
                 >
                   <Play className="w-4 h-4 text-amber-400 fill-amber-400" />
-                  Explore Full Campus Tour & Facilities
+                  Explore Campus Facilities
+                </Link>
+                <Link 
+                  href="/campus#shuttle"
+                  className="bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 font-bold text-xs px-5 py-3 rounded-xl transition flex items-center gap-2"
+                >
+                  <Bus className="w-4 h-4 text-emerald-400" />
+                  Live Dhaka Shuttle Tracker
                 </Link>
               </div>
             </div>
@@ -323,8 +341,56 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Upcoming Events, Seminars & Hackathons Carousel */}
+        <EventsCarouselSection />
+
         {/* Dedicated Category-Filtered Notice Board Section */}
         <NoticeBoardSection />
+
+        {/* Global Alumni & Research Portal Discovery Strip */}
+        <section className="py-16 px-4 bg-[#081d2f] border-t border-white/10">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-8 flex flex-col justify-between gap-6">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-amber-400">
+                  Global Placement Network
+                </span>
+                <h3 className="text-2xl font-black text-white mt-2">
+                  Alumni Leading Google DeepMind, NVIDIA &amp; Microsoft
+                </h3>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  Connect directly with AMIU alumni engineers and founders worldwide for mock interviews, PhD admissions guidance, and internship referrals.
+                </p>
+              </div>
+              <Link
+                href="/alumni"
+                className="w-fit px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-2 transition"
+              >
+                Explore Alumni Directory <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-8 flex flex-col justify-between gap-6">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400">
+                  Faculty Research &amp; Mentorship
+                </span>
+                <h3 className="text-2xl font-black text-white mt-2">
+                  Digital Paper Archive &amp; 1-on-1 Office Hours
+                </h3>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  Explore IEEE &amp; NeurIPS publications authored by AMIU professors or reserve direct mentorship time slots online.
+                </p>
+              </div>
+              <Link
+                href="/faculty"
+                className="w-fit px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-2 transition"
+              >
+                Open Faculty &amp; Archive <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

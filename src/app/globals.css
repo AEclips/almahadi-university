@@ -3,12 +3,145 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light dark;
   --background: #f8fafc;
   --foreground: #0f172a;
+
+  /* ERP surface light/dark tokens */
+  --erp-bg-light: #f1f5f9;
+  --erp-bg-dark: #0f172a;
+  --erp-card-light: #ffffff;
+  --erp-card-dark: rgba(30, 41, 59, 0.78);
+  --erp-subcard-light: #f8fafc;
+  --erp-subcard-dark: rgba(15, 23, 42, 0.75);
+  --erp-border-light: #cbd5e1;
+  --erp-border-dark: rgba(255, 255, 255, 0.1);
+  --erp-text-light: #0f172a;
+  --erp-text-dark: #f1f5f9;
+  --erp-muted-light: #475569;
+  --erp-muted-dark: #94a3b8;
+
+  /* Fallbacks for older browsers without light-dark() */
+  --erp-bg: var(--erp-bg-light);
+  --erp-card: var(--erp-card-light);
+  --erp-subcard: var(--erp-subcard-light);
+  --erp-border: var(--erp-border-light);
+  --erp-text: var(--erp-text-light);
+  --erp-muted: var(--erp-muted-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --erp-bg: var(--erp-bg-dark);
+    --erp-card: var(--erp-card-dark);
+    --erp-subcard: var(--erp-subcard-dark);
+    --erp-border: var(--erp-border-dark);
+    --erp-text: var(--erp-text-dark);
+    --erp-muted: var(--erp-muted-dark);
+  }
+}
+
+/* Reflect explicit meta[name="color-scheme"] override in :root */
+:root:has(> head > meta[name="color-scheme"][content="dark"]) {
+  color-scheme: dark;
+  --erp-bg: var(--erp-bg-dark);
+  --erp-card: var(--erp-card-dark);
+  --erp-subcard: var(--erp-subcard-dark);
+  --erp-border: var(--erp-border-dark);
+  --erp-text: var(--erp-text-dark);
+  --erp-muted: var(--erp-muted-dark);
+}
+
+:root:has(> head > meta[name="color-scheme"][content="light"]) {
+  color-scheme: light;
+  --erp-bg: var(--erp-bg-light);
+  --erp-card: var(--erp-card-light);
+  --erp-subcard: var(--erp-subcard-light);
+  --erp-border: var(--erp-border-light);
+  --erp-text: var(--erp-text-light);
+  --erp-muted: var(--erp-muted-light);
+}
+
+@supports (color: light-dark(white, black)) {
+  :root {
+    --erp-bg: light-dark(var(--erp-bg-light), var(--erp-bg-dark));
+    --erp-card: light-dark(var(--erp-card-light), var(--erp-card-dark));
+    --erp-subcard: light-dark(var(--erp-subcard-light), var(--erp-subcard-dark));
+    --erp-border: light-dark(var(--erp-border-light), var(--erp-border-dark));
+    --erp-text: light-dark(var(--erp-text-light), var(--erp-text-dark));
+    --erp-muted: light-dark(var(--erp-muted-light), var(--erp-muted-dark));
+  }
+}
+
+.erp-surface {
+  background-color: var(--erp-bg);
+  color: var(--erp-text);
+}
+
+.erp-card {
+  background-color: var(--erp-card);
+  border-color: var(--erp-border);
+  color: var(--erp-text);
+}
+
+.erp-subcard {
+  background-color: var(--erp-subcard);
+  border-color: var(--erp-border);
+  color: var(--erp-text);
+}
+
+.erp-muted {
+  color: var(--erp-muted);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Native <dialog> modal scroll containment and backdrop styling */
+dialog:modal {
+  overscroll-behavior: contain;
+  margin: auto;
+  max-height: min(90dvh, 840px);
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgba(2, 6, 23, 0.78);
+  backdrop-filter: blur(5px);
+}
+
+/* Native CSS scroll-snap carousel track */
+.events-carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  touch-action: pan-x;
+  scrollbar-width: thin;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .events-carousel-track {
+    scroll-behavior: smooth;
+  }
+}
+
+.events-carousel-slide {
+  scroll-snap-align: start;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

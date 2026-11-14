@@ -216,9 +216,12 @@ export function Footer() {
           </h4>
           <ul className="space-y-2.5 text-xs font-medium">
             <li><Link href="/portal" className="hover:text-amber-300 transition">AMIU Smart ERP Student Portal</Link></li>
-            <li><Link href="/campus" className="hover:text-amber-300 transition">Campus Tour & Facilities</Link></li>
-            <li><a href="#notice" className="hover:text-amber-300 transition">Official Circulars & Notices</a></li>
-            <li><a href="#calculator" className="hover:text-amber-300 transition">Scholarship Calculator</a></li>
+            <li><Link href="/campus" className="hover:text-amber-300 transition">Campus Tour &amp; Facilities</Link></li>
+            <li><Link href="/campus#shuttle" className="hover:text-amber-300 transition">Live Campus Shuttle Tracker</Link></li>
+            <li><Link href="/alumni" className="hover:text-amber-300 transition">Global Alumni &amp; Careers</Link></li>
+            <li><Link href="/apply" className="hover:text-amber-300 transition">Online Admissions Form</Link></li>
+            <li><Link href="/#notice" className="hover:text-amber-300 transition">Official Circulars &amp; Notices</Link></li>
+            <li><Link href="/#calculator" className="hover:text-amber-300 transition">Scholarship Calculator</Link></li>
           </ul>
         </div>
 
