@@ -28,10 +28,16 @@ export default function RootLayout({
       <head>
         <meta name="color-scheme" content="light dark" />
         <script dangerouslySetInnerHTML={{ __html: COLOR_SCHEME_INIT_SCRIPT }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        />
         {/* Direct static link ensures CSS loads instantly without waiting on bundler compilation */}
         <link rel="stylesheet" href="/compiled-tailwind.css" />
       </head>
-      <body className="antialiased">
+      <body className="antialiased font-sans">
         {children}
         <AIChatbot />
       </body>

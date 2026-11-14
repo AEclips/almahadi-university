@@ -132,6 +132,8 @@ export default function CampusLifePage() {
       title: "NVIDIA Supercomputing & Deep AI Laboratory",
       category: "Innovation & Research",
       tag: "Center of Excellence",
+      image: "/images/ai-quantum-lab.webp",
+      imageAlt: "NVIDIA GPU servers and deep AI robotics engineers working inside AMIU Supercomputing Lab",
       desc: "Houses 128 high-density GPU computing clusters with direct gigabit optic pipelines for machine learning, autonomous drone software, and quantum simulations.",
       stat: "128 GPUs",
       tourSpecs: ["NVIDIA H100 & A100 Research Clusters", "10 Gbps Dedicated Dark Fiber", "24/7 Biometric Student Lab Access", "Liquid-Cooled Rack Architecture"],
@@ -140,6 +142,8 @@ export default function CampusLifePage() {
       title: "10,000-Seat Grand Amphitheater & Eco-Lake",
       category: "Architecture & Eco-Biosphere",
       tag: "Green Campus",
+      image: "/images/eco-amphitheater.webp",
+      imageAlt: "Curved timber and solar glass eco-amphitheater beside the botanical lake",
       desc: "Designed around a natural rainwater-harvesting freshwater lake, offering students an open-air cultural arena, botanical gardens, and solar promenade.",
       stat: "150 Acres",
       tourSpecs: ["Zero-Carbon Solar Shade Canopy", "Botanical Wetland Filtration System", "Dolby Atmos Open-Air Acoustics", "Lakeside Study Gazebos with Wi-Fi 7"],
@@ -148,15 +152,19 @@ export default function CampusLifePage() {
       title: "Olympic-Standard Indoor Sports & Aquatic Pavilion",
       category: "Athletics & Student Life",
       tag: "Sports Complex",
+      image: "/images/sports-pavilion.webp",
+      imageAlt: "Sunlit timber-arch indoor aquatic pavilion with Olympic competition swimming lanes",
       desc: "Features a temperature-regulated 50m Olympic swimming pool, FIFA-grade turf ground, basketball arena, and professional fitness gymnasium.",
       stat: "24/7 Access",
       tourSpecs: ["50-Meter Heated Competition Pool", "FIFA Quality Pro Artificial Turf", "Badminton, Squash & Indoor Basketball", "Sports Science & Recovery Clinic"],
     },
     {
-      title: "International Scholars Tower & Residence Suites",
-      category: "Student Housing",
+      title: "International Scholars Tower & Research Library",
+      category: "Student Housing & Study",
       tag: "Smart Living",
-      desc: "High-speed Wi-Fi 7 enabled student dormitories, individual study suites, laundry care, 24/7 armed biometric security, and dedicated dining halls.",
+      image: "/images/global-quad-library.webp",
+      imageAlt: "Multi-tier oak and glass research library atrium and quiet scholars commons",
+      desc: "High-speed Wi-Fi 7 enabled study commons, digital IEEE archives, individual residential suites, 24/7 biometric security, and dedicated dining halls.",
       stat: "4,500 Capacity",
       tourSpecs: ["Single & Twin Private Air-Conditioned Suites", "Multi-Cuisine Hygienic Dining Halls", "RFID Smart Keycard & CCTV Mesh", "Direct Shuttle Terminal at Residence Gate"],
     },
@@ -193,8 +201,8 @@ export default function CampusLifePage() {
             <Trees className="w-3.5 h-3.5 text-emerald-400" />
             Zero-Carbon Smart Sanctuary
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white">Campus Life & World-Class Facilities</h1>
-          <p className="text-slate-400 text-sm sm:text-base">
+          <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white">Campus Life &amp; World-Class Facilities</h1>
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Discover a transformative 150-acre green campus located in Dhaka, built to nurture academic rigor, creative collaboration, and seamless smart transit.
           </p>
         </div>
@@ -204,24 +212,39 @@ export default function CampusLifePage() {
           {highlights.map((h, i) => (
             <div
               key={i}
-              className="bg-slate-800/60 border border-white/10 rounded-3xl p-8 hover:border-amber-400/60 transition-all hover:-translate-y-1 shadow-2xl flex flex-col justify-between group"
+              className="bg-slate-800/60 border border-white/10 rounded-3xl overflow-hidden hover:border-amber-400/60 transition-all hover:-translate-y-1 shadow-2xl flex flex-col justify-between group"
             >
               <div>
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/20 px-3 py-1 rounded-full">
-                    {h.tag}
-                  </span>
-                  <span className="text-2xl font-black text-emerald-400">{h.stat}</span>
+                <div className="relative aspect-[16/9] overflow-hidden bg-slate-950">
+                  <img
+                    src={h.image}
+                    alt={h.imageAlt}
+                    width={1200}
+                    height={670}
+                    {...(i < 2 ? { fetchPriority: "high" as const } : { loading: "lazy" as const })}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
+                  <div className="absolute top-4 left-6 right-6 flex justify-between items-center">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-slate-950/80 backdrop-blur-md border border-amber-400/30 px-3 py-1 rounded-full">
+                      {h.tag}
+                    </span>
+                    <span className="text-sm sm:text-base font-black text-emerald-300 bg-slate-950/80 backdrop-blur-md border border-emerald-500/30 px-3 py-1 rounded-full">
+                      {h.stat}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-black text-white group-hover:text-amber-300 transition mb-3">
-                  {h.title}
-                </h3>
-                <p className="text-xs text-slate-400 leading-relaxed font-normal mb-6">
-                  {h.desc}
-                </p>
+                <div className="p-8 pb-4">
+                  <h3 className="text-xl font-serif font-bold text-white group-hover:text-amber-300 transition mb-3">
+                    {h.title}
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    {h.desc}
+                  </p>
+                </div>
               </div>
 
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+              <div className="mx-8 mb-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
                 <span className="flex items-center gap-1.5 text-slate-300">
                   <MapPin className="w-3.5 h-3.5 text-amber-400" /> Al Mahadi Smart City, Dhaka
                 </span>
@@ -242,22 +265,38 @@ export default function CampusLifePage() {
           id="shuttle"
           className="rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-[#071d2f] via-slate-900 to-[#061523] p-6 sm:p-10 shadow-2xl"
         >
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 pb-6 border-b border-white/10">
-            <div className="space-y-2">
-              <span className="text-amber-400 font-black text-xs uppercase tracking-[0.2em] bg-amber-400/10 border border-amber-400/30 px-3.5 py-1 rounded-full inline-flex items-center gap-2">
-                <Bus className="w-3.5 h-3.5" />
-                Zero-Hassle Dhaka-Ashulia Commute
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-black text-white">
-                Live Campus Shuttle Tracker & Route Finder
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10 pb-8 border-b border-white/10">
+            <div className="lg:col-span-7 space-y-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-amber-400 font-black text-xs uppercase tracking-[0.2em] bg-amber-400/10 border border-amber-400/30 px-3.5 py-1 rounded-full inline-flex items-center gap-2">
+                  <Bus className="w-3.5 h-3.5" />
+                  Zero-Hassle Dhaka-Ashulia Commute
+                </span>
+                <span className="inline-flex items-center gap-2 text-xs font-bold text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-1 rounded-full">
+                  <Wifi className="w-3.5 h-3.5 text-emerald-400" />
+                  28 Electric &amp; AC Shuttles Active
+                </span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white">
+                Live Campus Shuttle Tracker &amp; Route Finder
               </h2>
-              <p className="text-xs sm:text-sm text-slate-400 max-w-2xl">
+              <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
                 Track real-time GPS fleet positions, AC coach seat availability, and reserve your digital boarding pass across 28 Wi-Fi 7 equipped university shuttles.
               </p>
             </div>
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-4 py-2 rounded-2xl">
-              <Wifi className="w-4 h-4 text-emerald-400" />
-              28 Electric & AC Shuttles Active
+            <div className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-white/15 aspect-[16/9] shadow-xl">
+              <img
+                src="/images/smart-shuttle-campus.webp"
+                alt="Al Mahadi University electric transit shuttles docked at the glass campus hub"
+                width={1200}
+                height={670}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+              <span className="absolute bottom-2.5 left-3.5 text-[10px] font-black uppercase tracking-wider text-emerald-300 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-emerald-500/30">
+                EV Coach Transit Hub • Ashulia
+              </span>
             </div>
           </div>
 

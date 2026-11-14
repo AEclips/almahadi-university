@@ -139,18 +139,34 @@ export default function AlumniNetworkPage() {
       </header>
 
       <main className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
-        {/* Hero */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-          <span className="text-amber-400 font-black text-xs uppercase tracking-[0.25em] bg-amber-400/10 border border-amber-400/30 px-4 py-1.5 rounded-full inline-flex items-center gap-2">
-            <Globe2 className="w-3.5 h-3.5" />
-            Global Career Placement Portal
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white">
-            AMIU Distinguished Alumni Network
-          </h1>
-          <p className="text-slate-400 text-sm sm:text-base">
-            Connect directly with AMIU graduates leading engineering, robotics, and venture teams worldwide for 1-on-1 career guidance and interview referrals.
-          </p>
+        {/* Editorial Alumni Showcase Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-14 rounded-3xl border border-white/10 bg-slate-800/40 p-6 sm:p-10 shadow-2xl">
+          <div className="lg:col-span-6 space-y-4">
+            <span className="text-amber-400 font-black text-xs uppercase tracking-[0.25em] bg-amber-400/10 border border-amber-400/30 px-4 py-1.5 rounded-full inline-flex items-center gap-2">
+              <Globe2 className="w-3.5 h-3.5" />
+              Global Career Placement Portal
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white leading-tight">
+              AMIU Distinguished Alumni Network
+            </h1>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+              Connect directly with AMIU graduates leading engineering, robotics, and venture teams worldwide for 1-on-1 career guidance and interview referrals.
+            </p>
+          </div>
+          <div className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-white/15 aspect-[16/9] shadow-xl">
+            <img
+              src="/images/convocation-scholars.webp"
+              alt="Graduating Al Mahadi International University scholars celebrating at convocation"
+              width={1200}
+              height={670}
+              fetchPriority="high"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent" />
+            <span className="absolute bottom-3 left-4 text-[11px] font-bold text-white bg-slate-950/75 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
+              12,400+ Alumni Across 38 Countries
+            </span>
+          </div>
         </div>
 
         {/* Career Impact Stats */}

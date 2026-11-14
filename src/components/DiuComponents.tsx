@@ -37,10 +37,20 @@ export function TopUtilityBar() {
 
 export function HeroBanner({ onOpenModal }: { onOpenModal?: () => void }) {
   return (
-    <section className="relative min-h-[640px] flex items-center bg-[#071927] text-white py-24 px-4 overflow-hidden border-b border-emerald-950/40">
-      {/* Dynamic Ambient Glows & Grid Mesh */}
-      <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:32px_32px] opacity-15 pointer-events-none"></div>
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-emerald-600/25 rounded-full blur-3xl pointer-events-none"></div>
+    <section className="relative min-h-[680px] flex flex-col justify-center bg-[#061523] text-white pt-24 pb-16 px-4 overflow-hidden border-b border-emerald-950/40">
+      {/* Editorial Hero Campus Photograph (LCP Priority) */}
+      <img
+        src="/images/hero-campus.webp"
+        alt="Al Mahadi International University lakeside sandstone and glass campus at twilight"
+        width={1600}
+        height={893}
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-60 pointer-events-none select-none"
+      />
+      {/* Architectural Navy Atmospheric Scrims for High-Contrast Typography */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#061523]/95 via-[#071927]/80 to-[#061523]/45 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#061523] via-transparent to-[#061523]/45 pointer-events-none"></div>
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute -bottom-20 left-1/3 w-[600px] h-64 bg-emerald-900/30 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -52,15 +62,15 @@ export function HeroBanner({ onOpenModal }: { onOpenModal?: () => void }) {
             Pioneering Higher Education for the AI & Quantum Era
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-[68px] font-black tracking-tight leading-[1.08]">
+          <h1 className="text-4xl sm:text-6xl lg:text-[66px] font-serif font-bold tracking-tight leading-[1.06]">
             Architecting the <br />
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">
+            <span className="text-amber-300 italic font-semibold">
               Leaders of Tomorrow
             </span>
           </h1>
 
-          <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed font-normal">
-            Welcome to <strong className="text-white font-semibold">Al Mahadi International University (AMIU)</strong>. Where state-of-the-art permanent smart green campuses converge with cutting-edge AI research labs, international dual-degree transfer, and industry incubation.
+          <p className="text-slate-200 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+            Welcome to <strong className="text-white font-semibold">Al Mahadi International University (AMIU)</strong>. Where permanent smart green architecture converges with AI supercomputing labs, international dual-degree pathways, and translational research.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
@@ -140,6 +150,37 @@ export function HeroBanner({ onOpenModal }: { onOpenModal?: () => void }) {
           </div>
         </div>
       </div>
+
+      {/* World-Class University Audience Wayfinding Bar (MIT / Harvard Pattern) */}
+      <div className="max-w-7xl mx-auto w-full relative z-10 mt-10 pt-6 border-t border-white/15">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-300">
+            Pathways For
+          </span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-grow lg:max-w-4xl">
+            {[
+              { label: "Prospective Students", sub: "Spring 2026 Admissions", href: "/apply" },
+              { label: "Current Students", sub: "Student ERP & Fees", href: "/portal" },
+              { label: "Faculty & Research", sub: "Office Hours & Papers", href: "/faculty" },
+              { label: "Global Alumni", sub: "Referrals & Placement", href: "/alumni" },
+            ].map((path) => (
+              <Link
+                key={path.href}
+                href={path.href}
+                className="group rounded-2xl bg-[#071523]/75 hover:bg-white/15 backdrop-blur-md border border-white/15 hover:border-amber-400/60 px-4 py-3 transition flex items-center justify-between gap-2"
+              >
+                <div>
+                  <div className="text-xs font-bold text-white group-hover:text-amber-300 transition">
+                    {path.label}
+                  </div>
+                  <div className="text-[10px] text-slate-300 mt-0.5">{path.sub}</div>
+                </div>
+                <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 transition flex-shrink-0" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -158,7 +199,7 @@ export function StatsTicker() {
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (
-            <div key={idx} className="flex items-center space-x-4 border-l-4 border-emerald-600 pl-5 group">
+            <div key={idx} className="flex items-center space-x-4 md:border-r md:last:border-r-0 border-slate-200/80 md:pr-6 group">
               <div className="p-3 bg-emerald-50 group-hover:bg-emerald-600 group-hover:text-white text-emerald-700 rounded-2xl transition-all shadow-sm">
                 <Icon className="w-7 h-7 flex-shrink-0" />
               </div>
@@ -242,10 +283,10 @@ export function Footer() {
         <div>
           © 2026 Al Mahadi International University (AMIU). Built with clean-room architecture.
         </div>
-        <div className="flex space-x-6">
-          <a href="#" className="hover:text-slate-400 transition">Privacy Policy</a>
-          <a href="#" className="hover:text-slate-400 transition">Terms of Accreditation</a>
-          <a href="#" className="hover:text-slate-400 transition">Security</a>
+        <div className="flex flex-wrap gap-6">
+          <Link href="/faculty" className="hover:text-slate-300 transition">Academic Charter</Link>
+          <Link href="/campus#shuttle" className="hover:text-slate-300 transition">Campus Safety &amp; Transit</Link>
+          <Link href="/portal" className="hover:text-slate-300 transition">Student ERP Security</Link>
         </div>
       </div>
     </footer>

@@ -14,6 +14,8 @@ interface UniversityEvent {
   seatsLeft: number;
   highlight: string;
   description: string;
+  image: string;
+  imageAlt: string;
 }
 
 const EVENTS: UniversityEvent[] = [
@@ -26,6 +28,8 @@ const EVENTS: UniversityEvent[] = [
     venue: "NVIDIA Supercomputing Hall, Ashulia",
     seatsLeft: 42,
     highlight: "৳500,000 Prize Pool",
+    image: "/images/hackathon-stage.webp",
+    imageAlt: "Student engineering team pitching robotics architecture on stage at AMIU Hackathon",
     description:
       "36-hour flagship coding marathon building multi-agent AI, quantum optimization, and sustainable smart-city solutions judged by engineers from Google & NVIDIA.",
   },
@@ -38,6 +42,8 @@ const EVENTS: UniversityEvent[] = [
     venue: "Main Auditorium, Smart Campus",
     seatsLeft: 115,
     highlight: "Keynote: Tokyo Univ",
+    image: "/images/ai-quantum-lab.webp",
+    imageAlt: "Autonomous robotics and deep learning supercomputing cluster",
     description:
       "Global academic forum showcasing bipedal humanoid locomotion, precision agriculture drones, and ROS2 industrial automation workflows.",
   },
@@ -50,6 +56,8 @@ const EVENTS: UniversityEvent[] = [
     venue: "10,000-Seat Eco-Lake Amphitheater",
     seatsLeft: 320,
     highlight: "Live Symphony & Clubs",
+    image: "/images/eco-amphitheater.webp",
+    imageAlt: "Open-air timber solar amphitheater by the botanical campus lake",
     description:
       "Grand welcome festival featuring Chancellor's keynote, merit scholarship awards, tech club exhibitions, and laser projection concert.",
   },
@@ -62,6 +70,8 @@ const EVENTS: UniversityEvent[] = [
     venue: "AMIU Startup Incubator, Level 4",
     seatsLeft: 28,
     highlight: "$250K Seed Grants",
+    image: "/images/global-quad-library.webp",
+    imageAlt: "Multi-level research commons hosting student entrepreneurship founders",
     description:
       "Student startups pitch live to Bangladeshi-American VCs and AMIU alumni founders for equity-free seed grants and cloud credits.",
   },
@@ -74,6 +84,8 @@ const EVENTS: UniversityEvent[] = [
     venue: "Central Green Plaza, Smart City",
     seatsLeft: 180,
     highlight: "Chancellor's Gold Medal",
+    image: "/images/convocation-scholars.webp",
+    imageAlt: "Graduating AMIU scholars celebrating in academic regalia on campus plaza",
     description:
       "Celebrating graduating scholars across Science, Engineering, and Business with international delegates and proud families.",
   },
@@ -208,8 +220,8 @@ export function EventsCarouselSection() {
               <Sparkles className="w-3.5 h-3.5" />
               News, Seminars & Hackathons
             </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-              Upcoming Events & Global Forums
+            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+              Upcoming Events &amp; Global Forums
             </h2>
             <p className="text-slate-400 text-sm sm:text-base max-w-2xl">
               Reserve your digital seat pass for upcoming hackathons, robotics symposiums, startup venture pitches, and convocation celebrations.
@@ -276,59 +288,74 @@ export function EventsCarouselSection() {
                 aria-roledescription="slide"
                 aria-label={`${idx + 1} of ${visibleEvents.length}`}
                 data-marker-name={`Go to slide ${idx + 1}`}
-                className="events-carousel-slide flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] rounded-3xl border border-white/10 bg-slate-800/75 hover:border-amber-400/60 p-7 shadow-2xl flex flex-col justify-between transition"
+                className="events-carousel-slide flex-none w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] rounded-3xl border border-white/10 bg-slate-800/75 hover:border-amber-400/60 overflow-hidden shadow-2xl flex flex-col justify-between transition group"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-300 bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-1 rounded-full">
-                      {ev.category}
-                    </span>
-                    <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-amber-400/10 border border-amber-400/30 px-2.5 py-1 rounded-full flex items-center gap-1">
-                      <Trophy className="w-3 h-3" />
-                      {ev.highlight}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-black text-white leading-snug mb-3">
-                    {ev.title}
-                  </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-5">
-                    {ev.description}
-                  </p>
-
-                  <div className="space-y-2 text-xs text-slate-400 bg-slate-900/80 rounded-2xl p-4 border border-white/5 mb-6">
-                    <div className="flex items-center gap-2 text-slate-200 font-semibold">
-                      <Calendar className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-                      <span>
-                        {ev.date} • {ev.time}
+                  <div className="relative aspect-[16/9] overflow-hidden bg-slate-900">
+                    <img
+                      src={ev.image}
+                      alt={ev.imageAlt}
+                      width={1200}
+                      height={670}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/20 to-transparent" />
+                    <div className="absolute bottom-3 left-5 right-5 flex items-center justify-between gap-2">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-emerald-300 bg-slate-950/80 backdrop-blur-md border border-emerald-500/40 px-2.5 py-1 rounded-full">
+                        {ev.category}
+                      </span>
+                      <span className="text-[10px] font-black uppercase tracking-wider text-amber-300 bg-slate-950/80 backdrop-blur-md border border-amber-400/40 px-2.5 py-1 rounded-full flex items-center gap-1">
+                        <Trophy className="w-3 h-3" />
+                        {ev.highlight}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
-                      <span>{ev.venue}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
-                      <span>{ev.seatsLeft} Public & Student Seats Open</span>
+                  </div>
+
+                  <div className="p-7 pb-0">
+                    <h3 className="text-xl font-serif font-bold text-white leading-snug mb-3">
+                      {ev.title}
+                    </h3>
+                    <p className="text-xs text-slate-300 leading-relaxed mb-5">
+                      {ev.description}
+                    </p>
+
+                    <div className="space-y-2 text-xs text-slate-400 bg-slate-900/80 rounded-2xl p-4 border border-white/5 mb-6">
+                      <div className="flex items-center gap-2 text-slate-200 font-semibold">
+                        <Calendar className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                        <span>
+                          {ev.date} • {ev.time}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                        <span>{ev.venue}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
+                        <span>{ev.seatsLeft} Public &amp; Student Seats Open</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {bookedPass ? (
-                  <div className="w-full py-3 px-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-black flex items-center justify-center gap-2">
-                    <CheckCircle2 className="w-4 h-4" />
-                    Seat Reserved ({bookedPass})
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => setRsvpEvent(ev)}
-                    className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-amber-400/20 flex items-center justify-center gap-2"
-                  >
-                    <Ticket className="w-4 h-4" />
-                    Reserve Free Event Seat
-                  </button>
-                )}
+                <div className="px-7 pb-7">
+                  {bookedPass ? (
+                    <div className="w-full py-3 px-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-black flex items-center justify-center gap-2">
+                      <CheckCircle2 className="w-4 h-4" />
+                      Seat Reserved ({bookedPass})
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setRsvpEvent(ev)}
+                      className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-amber-400/20 flex items-center justify-center gap-2"
+                    >
+                      <Ticket className="w-4 h-4" />
+                      Reserve Free Event Seat
+                    </button>
+                  )}
+                </div>
               </article>
             );
           })}

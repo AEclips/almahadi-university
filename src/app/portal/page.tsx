@@ -224,7 +224,7 @@ export default function StudentPortalDemo() {
             </div>
             <div>
               <div className="flex items-center gap-3">
-                <h1 className={`text-2xl font-black ${isLight ? "text-slate-900" : "text-white"}`}>
+                <h1 className={`text-2xl font-serif font-bold ${isLight ? "text-slate-900" : "text-white"}`}>
                   Mukto (HP)
                 </h1>
                 <span className="text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-500 border border-emerald-500/40 px-2.5 py-0.5 rounded-full">

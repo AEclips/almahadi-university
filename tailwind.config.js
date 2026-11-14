@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', "system-ui", "-apple-system", "sans-serif"],
+        serif: ['"Newsreader"', "Georgia", "serif"],
+      },
       colors: {
         diu: {
           green: "#1b7340",

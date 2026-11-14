@@ -262,16 +262,32 @@ export default function FacultyPage() {
       </header>
 
       <main className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
-        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
-          <span className="text-amber-400 font-black text-xs uppercase tracking-[0.25em] bg-amber-400/10 border border-amber-400/30 px-4 py-1.5 rounded-full inline-block">
-            Distinguished Global Academicians
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white">
-            Faculty Mentorship & Research Archive
-          </h1>
-          <p className="text-slate-400 text-sm sm:text-base">
-            Book 1-on-1 faculty office hours directly or explore peer-reviewed publications by Al Mahadi International University researchers.
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12 rounded-3xl border border-white/10 bg-slate-800/40 p-6 sm:p-10 shadow-2xl">
+          <div className="lg:col-span-6 space-y-4">
+            <span className="text-amber-400 font-black text-xs uppercase tracking-[0.25em] bg-amber-400/10 border border-amber-400/30 px-4 py-1.5 rounded-full inline-block">
+              Distinguished Global Academicians
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white leading-tight">
+              Faculty Mentorship &amp; Research Archive
+            </h1>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+              Book 1-on-1 faculty office hours directly or explore peer-reviewed IEEE, NeurIPS, and Springer publications authored by Al Mahadi International University researchers.
+            </p>
+          </div>
+          <div className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-white/15 aspect-[16/9] shadow-xl">
+            <img
+              src="/images/faculty-mentorship.webp"
+              alt="AMIU computer science professor mentoring honors students at a glass whiteboard"
+              width={1200}
+              height={670}
+              fetchPriority="high"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent" />
+            <span className="absolute bottom-3 left-4 text-[11px] font-bold text-white bg-slate-950/75 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
+              Direct PhD &amp; Honors Research Mentorship
+            </span>
+          </div>
         </div>
 
         {/* Mode Switcher Tabs */}

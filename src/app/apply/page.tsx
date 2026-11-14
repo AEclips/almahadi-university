@@ -115,13 +115,31 @@ export default function ApplyPage() {
                 <Sparkles className="w-3.5 h-3.5" /> Spring 2026 Admissions
               </div>
 
-              <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-                Apply for Undergraduate & Graduate Degrees
+              <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight leading-tight">
+                Apply for Undergraduate &amp; Graduate Degrees
               </h1>
 
               <p className="text-sm text-slate-300 leading-relaxed">
                 Take your first step toward an internationally accredited degree with world-class faculty, smart campus labs, and merit scholarship waivers up to 100%.
               </p>
+
+              <div className="rounded-2xl overflow-hidden border border-white/15 bg-slate-950 shadow-2xl">
+                <div className="relative aspect-[16/9]">
+                  <img
+                    src="/images/scholars-courtyard.webp"
+                    alt="Al Mahadi honors students collaborating in the sunlit courtyard"
+                    width={1200}
+                    height={670}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] font-bold text-white">
+                    <span>Spring 2026 Scholars Cohort</span>
+                    <span className="text-amber-400">Up to 100% Merit Waiver</span>
+                  </div>
+                </div>
+              </div>
 
               <div className="space-y-4 pt-4 border-t border-white/10 text-xs">
                 <div className="flex items-start gap-3">

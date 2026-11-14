@@ -171,11 +171,11 @@ export default function Home() {
                   <Sparkles className="w-3.5 h-3.5" />
                   Experience The Distinction
                 </span>
-                <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+                <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
                   World-Class 150-Acre Smart Green Sanctuary
                 </h2>
-                <p className="text-slate-400 text-sm sm:text-base max-w-2xl">
-                  Take an interactive walkthrough of South Asia&apos;s most advanced sustainable academic biosphere with IoT-monitored smart labs, high-speed transit, and 24/7 sports complexes.
+                <p className="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+                  Explore South Asia&apos;s premier sustainable university biosphere with GPU research facilities, solar amphitheaters, Olympic athletics, and zero-emission campus shuttles.
                 </p>
               </div>
 
@@ -200,52 +200,73 @@ export default function Home() {
             {/* Visual Bento Grid of the Campus */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Feature 1: AI Supercomputing Center */}
-              <Link href="/campus" className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-800/80 group h-80 shadow-2xl flex flex-col justify-end p-8 block">
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent z-10"></div>
-                <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px] opacity-30"></div>
-                <div className="relative z-20 space-y-2">
-                  <div className="p-3 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 rounded-2xl w-fit">
-                    <Cpu className="w-6 h-6" />
+              <Link href="/campus" className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-900 group h-96 shadow-2xl flex flex-col justify-end p-8">
+                <img
+                  src="/images/ai-quantum-lab.webp"
+                  alt="Researchers inside the AMIU AI supercomputing and robotics laboratory"
+                  width={1200}
+                  height={670}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/65 to-slate-950/15 z-10"></div>
+                <div className="relative z-20 space-y-2.5">
+                  <div className="p-2.5 bg-emerald-500/25 backdrop-blur-md border border-emerald-400/40 text-emerald-300 rounded-xl w-fit">
+                    <Cpu className="w-5 h-5" />
                   </div>
-                  <h3 className="text-2xl font-black text-white group-hover:text-amber-300 transition">
-                    NVIDIA AI & Quantum Computing Hub
+                  <h3 className="text-2xl font-serif font-bold text-white group-hover:text-amber-300 transition">
+                    NVIDIA AI &amp; Quantum Computing Hub
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    Equipped with GPU clusters dedicated to autonomous robotics, Large Language Models, and deep genomic sequencing.
+                  <p className="text-xs text-slate-200 leading-relaxed">
+                    GPU clusters dedicated to autonomous robotics, Large Language Models, and deep genomic sequencing.
                   </p>
                 </div>
               </Link>
 
               {/* Feature 2: Sustainable Eco Architecture */}
-              <Link href="/campus" className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-800/80 group h-80 shadow-2xl flex flex-col justify-end p-8 block">
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent z-10"></div>
-                <div className="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
-                <div className="relative z-20 space-y-2">
-                  <div className="p-3 bg-amber-500/20 border border-amber-400/40 text-amber-300 rounded-2xl w-fit">
-                    <Building className="w-6 h-6" />
+              <Link href="/campus" className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-900 group h-96 shadow-2xl flex flex-col justify-end p-8">
+                <img
+                  src="/images/eco-amphitheater.webp"
+                  alt="AMIU timber and solar eco-amphitheater beside the botanical lake"
+                  width={1200}
+                  height={670}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/65 to-slate-950/15 z-10"></div>
+                <div className="relative z-20 space-y-2.5">
+                  <div className="p-2.5 bg-amber-500/25 backdrop-blur-md border border-amber-400/40 text-amber-300 rounded-xl w-fit">
+                    <Building className="w-5 h-5" />
                   </div>
-                  <h3 className="text-2xl font-black text-white group-hover:text-amber-300 transition">
-                    Zero-Emission Architectural Marvel
+                  <h3 className="text-2xl font-serif font-bold text-white group-hover:text-amber-300 transition">
+                    Zero-Emission Eco Amphitheater
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    100% solar-energized smart auditoriums, rain-harvested lake systems, and international standard residential suites.
+                  <p className="text-xs text-slate-200 leading-relaxed">
+                    Solar-energized lakeside amphitheater, rainwater biosphere filtration, and international student suites.
                   </p>
                 </div>
               </Link>
 
-              {/* Feature 3: Global Dual Degree Pavilion */}
-              <Link href="/campus" className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-800/80 group h-80 shadow-2xl flex flex-col justify-end p-8 block">
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent z-10"></div>
-                <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
-                <div className="relative z-20 space-y-2">
-                  <div className="p-3 bg-sky-500/20 border border-sky-400/40 text-sky-300 rounded-2xl w-fit">
-                    <Globe2 className="w-6 h-6" />
+              {/* Feature 3: Global Dual Degree Library & Hub */}
+              <Link href="/campus" className="relative rounded-3xl overflow-hidden border border-white/15 bg-slate-900 group h-96 shadow-2xl flex flex-col justify-end p-8">
+                <img
+                  src="/images/global-quad-library.webp"
+                  alt="Multi-tier oak and glass research library atrium at Al Mahadi University"
+                  width={1200}
+                  height={670}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/65 to-slate-950/15 z-10"></div>
+                <div className="relative z-20 space-y-2.5">
+                  <div className="p-2.5 bg-sky-500/25 backdrop-blur-md border border-sky-400/40 text-sky-300 rounded-xl w-fit">
+                    <Globe2 className="w-5 h-5" />
                   </div>
-                  <h3 className="text-2xl font-black text-white group-hover:text-amber-300 transition">
-                    120+ International Dual-Degree Transfer
+                  <h3 className="text-2xl font-serif font-bold text-white group-hover:text-amber-300 transition">
+                    Central Research Library &amp; Global Transfer
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    Seamless 2+2 and 3+1 credit pathways to top research universities in the USA, UK, Canada, Australia, and Germany.
+                  <p className="text-xs text-slate-200 leading-relaxed">
+                    24/7 digital IEEE holdings and seamless 2+2 &amp; 3+1 credit transfers to 120+ universities worldwide.
                   </p>
                 </div>
               </Link>
@@ -263,8 +284,8 @@ export default function Home() {
               <Compass className="w-4 h-4 text-amber-400" />
               World-Class Pedagogy
             </span>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-              Faculties & Academic Programs
+            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+              Faculties &amp; Academic Programs
             </h2>
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
               Outcome-Based Education (OBE) curricula aligned with ABET accreditation benchmarks, taught by world-class PhD faculties.
@@ -349,46 +370,72 @@ export default function Home() {
 
         {/* Global Alumni & Research Portal Discovery Strip */}
         <section className="py-16 px-4 bg-[#081d2f] border-t border-white/10">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-8 flex flex-col justify-between gap-6">
-              <div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-amber-400">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <article className="rounded-3xl border border-white/10 bg-slate-900/80 overflow-hidden flex flex-col justify-between shadow-2xl group">
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <img
+                  src="/images/convocation-scholars.webp"
+                  alt="AMIU graduating scholars celebrating at convocation on campus plaza"
+                  width={1200}
+                  height={670}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-6 text-[10px] font-black uppercase tracking-widest text-amber-300 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full border border-amber-400/30">
                   Global Placement Network
                 </span>
-                <h3 className="text-2xl font-black text-white mt-2">
-                  Alumni Leading Google DeepMind, NVIDIA &amp; Microsoft
-                </h3>
-                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                  Connect directly with AMIU alumni engineers and founders worldwide for mock interviews, PhD admissions guidance, and internship referrals.
-                </p>
               </div>
-              <Link
-                href="/alumni"
-                className="w-fit px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-2 transition"
-              >
-                Explore Alumni Directory <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+              <div className="p-8 pt-5 flex-grow flex flex-col justify-between gap-6">
+                <div>
+                  <h3 className="text-2xl font-serif font-bold text-white leading-snug">
+                    Alumni Leading Google DeepMind, NVIDIA &amp; Microsoft
+                  </h3>
+                  <p className="text-xs text-slate-300 mt-2 leading-relaxed max-w-lg">
+                    Connect directly with AMIU alumni engineers and founders worldwide for mock interviews, PhD admissions guidance, and internship referrals.
+                  </p>
+                </div>
+                <Link
+                  href="/alumni"
+                  className="w-fit px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-2 transition"
+                >
+                  Explore Alumni Directory <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </article>
 
-            <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-8 flex flex-col justify-between gap-6">
-              <div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400">
+            <article className="rounded-3xl border border-white/10 bg-slate-900/80 overflow-hidden flex flex-col justify-between shadow-2xl group">
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <img
+                  src="/images/faculty-mentorship.webp"
+                  alt="Professor discussing quantum circuits on a glass whiteboard with honors students"
+                  width={1200}
+                  height={670}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-6 text-[10px] font-black uppercase tracking-widest text-emerald-300 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full border border-emerald-400/30">
                   Faculty Research &amp; Mentorship
                 </span>
-                <h3 className="text-2xl font-black text-white mt-2">
-                  Digital Paper Archive &amp; 1-on-1 Office Hours
-                </h3>
-                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                  Explore IEEE &amp; NeurIPS publications authored by AMIU professors or reserve direct mentorship time slots online.
-                </p>
               </div>
-              <Link
-                href="/faculty"
-                className="w-fit px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-2 transition"
-              >
-                Open Faculty &amp; Archive <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+              <div className="p-8 pt-5 flex-grow flex flex-col justify-between gap-6">
+                <div>
+                  <h3 className="text-2xl font-serif font-bold text-white leading-snug">
+                    Digital Paper Archive &amp; 1-on-1 Office Hours
+                  </h3>
+                  <p className="text-xs text-slate-300 mt-2 leading-relaxed max-w-lg">
+                    Explore IEEE &amp; NeurIPS publications authored by AMIU professors or reserve direct mentorship time slots online.
+                  </p>
+                </div>
+                <Link
+                  href="/faculty"
+                  className="w-fit px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-2 transition"
+                >
+                  Open Faculty &amp; Archive <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </article>
           </div>
         </section>
       </main>
