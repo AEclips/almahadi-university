@@ -91,20 +91,24 @@ export function NativeDialog({
       {...({ closedby: "any" } as Record<string, string>)}
       className={`w-[calc(100%-2rem)] ${maxWidthClass} rounded-3xl border border-white/15 bg-slate-900 text-slate-100 p-0 shadow-2xl overflow-y-auto`}
     >
-      <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-[#071927]">
-        <h2 id={titleId} className="text-lg font-black text-white pr-4">
-          {title}
-        </h2>
-        <button
-          type="button"
-          onClick={() => dialogRef.current?.close()}
-          aria-label="Close modal"
-          className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition flex-shrink-0"
-        >
-          <X className="w-4 h-4" />
-        </button>
-      </div>
-      <div className="p-6">{children}</div>
+      {isOpen ? (
+        <>
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-[#071927]">
+            <h2 id={titleId} className="text-lg font-black text-white pr-4">
+              {title}
+            </h2>
+            <button
+              type="button"
+              onClick={() => dialogRef.current?.close()}
+              aria-label="Close modal"
+              className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition flex-shrink-0"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="p-6">{children}</div>
+        </>
+      ) : null}
     </dialog>
   );
 }

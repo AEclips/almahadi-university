@@ -3,9 +3,36 @@ import "./globals.css";
 import { AIChatbot } from "@/components/AIChatbot";
 
 export const metadata: Metadata = {
-  title: "Al Mahadi International University (AMIU) - Official Portal",
+  metadataBase: new URL("https://almahadi-university-gshs.vercel.app"),
+  title: "Al Mahadi International University (AMIU) — Official Portal",
   description:
-    "Official portal of Al Mahadi International University. Explore academic faculties, live campus shuttle routes, research archive, tuition scholarships, and online admissions.",
+    "Pioneering higher education for the AI & Quantum Era. Explore ABET-aligned faculties, 150-acre green smart campus, research archive, tuition scholarships, and online admissions.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Al Mahadi International University (AMIU) — Official Portal",
+    description:
+      "Pioneering higher education for the AI & Quantum Era. Explore ABET-aligned faculties, 150-acre green smart campus, research archive, tuition scholarships, and online admissions.",
+    url: "https://almahadi-university-gshs.vercel.app",
+    siteName: "Al Mahadi International University",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero-campus.webp",
+        width: 1600,
+        height: 893,
+        alt: "Al Mahadi International University Smart Campus at Twilight",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Al Mahadi International University (AMIU) — Official Portal",
+    description:
+      "Explore ABET-aligned faculties, 150-acre green smart campus, research archive, tuition scholarships, and online admissions.",
+    images: ["/images/hero-campus.webp"],
+  },
 };
 
 const COLOR_SCHEME_INIT_SCRIPT = `
@@ -32,12 +59,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&display=swap"
         />
         {/* Direct static link ensures CSS loads instantly without waiting on bundler compilation */}
         <link rel="stylesheet" href="/compiled-tailwind.css" />
       </head>
       <body className="antialiased font-sans">
+        <a href="#main-content" className="skip-to-main">
+          Skip to Main Content
+        </a>
         {children}
         <AIChatbot />
       </body>

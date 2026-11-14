@@ -49,7 +49,7 @@ export default function ApplyPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
+    <div className="min-h-screen flex flex-col bg-slate-900 text-white font-sans selection:bg-amber-400 selection:text-slate-950">
       <TopUtilityBar />
 
       {/* Header */}
@@ -69,7 +69,7 @@ export default function ApplyPage() {
         </div>
       </header>
 
-      <main className="flex-grow py-16 px-4 max-w-5xl mx-auto w-full">
+      <main id="main-content" className="flex-grow py-16 px-4 max-w-5xl mx-auto w-full">
         {submitted ? (
           <div className="bg-slate-800/80 border border-emerald-500/40 rounded-3xl p-8 sm:p-14 text-center shadow-2xl max-w-2xl mx-auto space-y-6">
             <div className="w-20 h-20 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded-full flex items-center justify-center mx-auto shadow-lg">

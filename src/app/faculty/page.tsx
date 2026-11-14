@@ -261,7 +261,7 @@ export default function FacultyPage() {
         </div>
       </header>
 
-      <main className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
+      <main id="main-content" className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12 rounded-3xl border border-white/10 bg-slate-800/40 p-6 sm:p-10 shadow-2xl">
           <div className="lg:col-span-6 space-y-4">
             <span className="text-amber-400 font-black text-xs uppercase tracking-[0.25em] bg-amber-400/10 border border-amber-400/30 px-4 py-1.5 rounded-full inline-block">

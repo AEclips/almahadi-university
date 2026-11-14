@@ -195,7 +195,7 @@ export default function CampusLifePage() {
         </div>
       </header>
 
-      <main className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
+      <main id="main-content" className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <span className="text-emerald-400 font-black text-xs uppercase tracking-[0.25em] bg-emerald-950/80 border border-emerald-500/40 px-4 py-1.5 rounded-full inline-flex items-center gap-2">
             <Trees className="w-3.5 h-3.5 text-emerald-400" />

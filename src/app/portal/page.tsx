@@ -215,7 +215,7 @@ export default function StudentPortalDemo() {
         </div>
       </header>
 
-      <main className="flex-grow py-12 px-4 max-w-7xl mx-auto w-full">
+      <main id="main-content" className="flex-grow py-12 px-4 max-w-7xl mx-auto w-full">
         {/* Student Profile Card */}
         <div className="erp-card border rounded-3xl p-6 sm:p-8 shadow-2xl mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex items-center gap-5">

@@ -138,7 +138,7 @@ export default function AlumniNetworkPage() {
         </div>
       </header>
 
-      <main className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
+      <main id="main-content" className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
         {/* Editorial Alumni Showcase Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-14 rounded-3xl border border-white/10 bg-slate-800/40 p-6 sm:p-10 shadow-2xl">
           <div className="lg:col-span-6 space-y-4">

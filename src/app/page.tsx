@@ -7,16 +7,39 @@ import { TuitionWaiverCalculator } from "@/components/TuitionWaiverCalculator";
 import { OnlineAdmissionModal } from "@/components/OnlineAdmissionModal";
 import { NoticeBoardSection } from "@/components/NoticeBoardSection";
 import { EventsCarouselSection } from "@/components/EventsCarouselSection";
+import { GlobalSearch } from "@/components/GlobalSearch";
+import { NativeDialog } from "@/components/NativeDialog";
 import { 
   ArrowRight, BookOpen, Clock, Building2, Award, Sparkles, 
-  Compass, Cpu, Laptop, Briefcase, Play,
+  Compass, Cpu, Laptop, Briefcase, Play, Layers, CheckCircle2,
   Globe2, Building, Bell, Users, Bus, Calendar
 } from "lucide-react";
 
+interface ProgramItem {
+  name: string;
+  duration: string;
+  credits: string;
+  highlight: string;
+  intake: string;
+  tuition: string;
+  lab: string;
+  coreModules: string[];
+  careers: string[];
+}
+
 export default function Home() {
   const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
+  const [activeProgram, setActiveProgram] = useState<ProgramItem | null>(null);
 
-  const programs = [
+  const programs: {
+    faculty: string;
+    badge: string;
+    icon: typeof Cpu;
+    gradient: string;
+    accentBorder: string;
+    accentColor: string;
+    items: ProgramItem[];
+  }[] = [
     {
       faculty: "Faculty of Science & Information Technology (FSIT)",
       badge: "Flagship AI & Computing Hub",
@@ -25,9 +48,39 @@ export default function Home() {
       accentBorder: "border-emerald-500/40 hover:border-emerald-500",
       accentColor: "text-emerald-400",
       items: [
-        { name: "B.Sc. in Computer Science & Engineering (CSE)", duration: "4 Years (12 Semesters)", credits: "148 Credits", highlight: "AI & Distributed Systems", intake: "Spring 2026 Open" },
-        { name: "B.Sc. in Software Engineering (SWE)", duration: "4 Years (12 Semesters)", credits: "140 Credits", highlight: "Cloud Architecture & DevOps", intake: "Spring 2026 Open" },
-        { name: "B.Sc. in Artificial Intelligence & Data Science", duration: "4 Years (12 Semesters)", credits: "142 Credits", highlight: "Deep Learning & Generative AI", intake: "Priority Cohort" },
+        {
+          name: "B.Sc. in Computer Science & Engineering (CSE)",
+          duration: "4 Years (12 Semesters)",
+          credits: "148 Credits",
+          highlight: "AI & Distributed Systems",
+          intake: "Spring 2026 Open",
+          tuition: "৳ 850,000 Base (Up to 75% Merit Waiver)",
+          lab: "NVIDIA Supercomputing & Quantum GPU Cluster",
+          coreModules: ["Algorithms & Complexity", "Operating Systems & Kernels", "Distributed Cloud Systems", "Machine Learning & LLMs", "Compiler Construction", "Capstone Honours Thesis"],
+          careers: ["AI Research Engineer", "Distributed Systems Architect", "Principal Software Engineer"],
+        },
+        {
+          name: "B.Sc. in Software Engineering (SWE)",
+          duration: "4 Years (12 Semesters)",
+          credits: "140 Credits",
+          highlight: "Cloud Architecture & DevOps",
+          intake: "Spring 2026 Open",
+          tuition: "৳ 780,000 Base (Up to 75% Merit Waiver)",
+          lab: "Cloud Native Microservices & Security Studio",
+          coreModules: ["Software Architecture & Patterns", "Microservices & Kubernetes", "Automated Testing & CI/CD", "Secure Web Engineering", "Human-Centered UX", "Industry Residency Sprint"],
+          careers: ["Cloud Platform Engineer", "Site Reliability Engineer", "Product Engineering Lead"],
+        },
+        {
+          name: "B.Sc. in Artificial Intelligence & Data Science",
+          duration: "4 Years (12 Semesters)",
+          credits: "142 Credits",
+          highlight: "Deep Learning & Generative AI",
+          intake: "Priority Cohort",
+          tuition: "৳ 820,000 Base (Up to 75% Merit Waiver)",
+          lab: "Deep Learning Vision & NLP Foundation Lab",
+          coreModules: ["Statistical Inference & Math", "Deep Neural Architectures", "Transformer Models & RL", "Big Data Spark Pipelines", "Ethics & Alignment in AI", "Applied AI Research Lab"],
+          careers: ["Applied ML Scientist", "Computer Vision Engineer", "LLM Evaluation Specialist"],
+        },
       ]
     },
     {
@@ -38,9 +91,39 @@ export default function Home() {
       accentBorder: "border-amber-500/40 hover:border-amber-500",
       accentColor: "text-amber-400",
       items: [
-        { name: "B.Sc. in Robotics & Mechatronics Engineering", duration: "4 Years (12 Semesters)", credits: "146 Credits", highlight: "Autonomous Drone & Humanoids", intake: "Spring 2026 Open" },
-        { name: "B.Sc. in Electrical & Electronic Engineering (EEE)", duration: "4 Years (12 Semesters)", credits: "144 Credits", highlight: "VLSI, IoT & Renewable Energy", intake: "Spring 2026 Open" },
-        { name: "B.Sc. in Civil & Smart Infrastructure", duration: "4 Years (12 Semesters)", credits: "150 Credits", highlight: "Sustainable Earthquake Design", intake: "Spring 2026 Open" },
+        {
+          name: "B.Sc. in Robotics & Mechatronics Engineering",
+          duration: "4 Years (12 Semesters)",
+          credits: "146 Credits",
+          highlight: "Autonomous Drone & Humanoids",
+          intake: "Spring 2026 Open",
+          tuition: "৳ 840,000 Base (Up to 75% Merit Waiver)",
+          lab: "Autonomous Locomotion & ROS2 Flight Arena",
+          coreModules: ["Kinematics & Control Theory", "Embedded RTOS Firmware", "ROS2 Navigation Stacks", "Actuator & Sensor Fusion", "SLAM & Autonomous Perception", "Industrial Manipulator Capstone"],
+          careers: ["Autonomous Robotics Engineer", "Flight Control Developer", "Automation Architect"],
+        },
+        {
+          name: "B.Sc. in Electrical & Electronic Engineering (EEE)",
+          duration: "4 Years (12 Semesters)",
+          credits: "144 Credits",
+          highlight: "VLSI, IoT & Renewable Energy",
+          intake: "Spring 2026 Open",
+          tuition: "৳ 720,000 Base (Up to 75% Merit Waiver)",
+          lab: "Cleanroom VLSI Silicon Design & Smart Grid Lab",
+          coreModules: ["Semiconductor Device Physics", "Analog & Digital VLSI", "Power Systems & Smart Grids", "Digital Signal Processing", "IoT Wireless Telemetry", "Renewable Energy Design"],
+          careers: ["VLSI Chip Design Engineer", "Power Grid Automation Lead", "IoT Systems Architect"],
+        },
+        {
+          name: "B.Sc. in Civil & Smart Infrastructure",
+          duration: "4 Years (12 Semesters)",
+          credits: "150 Credits",
+          highlight: "Sustainable Earthquake Design",
+          intake: "Spring 2026 Open",
+          tuition: "৳ 690,000 Base (Up to 75% Merit Waiver)",
+          lab: "Structural Seismology & Smart Green Materials Lab",
+          coreModules: ["Seismic Structural Dynamics", "Geotechnical Foundation Design", "BIM & Digital Twin Modeling", "Water Resources & Eco-Lakes", "Low-Carbon Concrete Tech", "Urban Metro Transportation"],
+          careers: ["Structural Bridge Engineer", "Smart Infrastructure Planner", "Geotechnical Specialist"],
+        },
       ]
     },
     {
@@ -51,14 +134,34 @@ export default function Home() {
       accentBorder: "border-sky-500/40 hover:border-sky-500",
       accentColor: "text-sky-400",
       items: [
-        { name: "Bachelor of Business Administration (BBA)", duration: "4 Years (12 Semesters)", credits: "126 Credits", highlight: "Fintech, Global Trade & Supply", intake: "Spring 2026 Open" },
-        { name: "B.Sc. in Tech Entrepreneurship & E-Commerce", duration: "4 Years (12 Semesters)", credits: "130 Credits", highlight: "Venture Incubation & Angel Funding", intake: "100% Seed Grant" },
+        {
+          name: "Bachelor of Business Administration (BBA)",
+          duration: "4 Years (12 Semesters)",
+          credits: "126 Credits",
+          highlight: "Fintech, Global Trade & Supply",
+          intake: "Spring 2026 Open",
+          tuition: "৳ 620,000 Base (Up to 75% Merit Waiver)",
+          lab: "Bloomberg Financial Trading & Case Analytics Studio",
+          coreModules: ["Quantitative Corporate Finance", "Digital FinTech & Blockchain", "Global Supply Chain Analytics", "Econometric Forecasting", "Strategic Marketing Lab", "Executive Consultancy Project"],
+          careers: ["Investment Banking Analyst", "FinTech Product Manager", "Global Supply Strategist"],
+        },
+        {
+          name: "B.Sc. in Tech Entrepreneurship & E-Commerce",
+          duration: "4 Years (12 Semesters)",
+          credits: "130 Credits",
+          highlight: "Venture Incubation & Angel Funding",
+          intake: "100% Seed Grant",
+          tuition: "৳ 640,000 Base (Seed Incubator Access)",
+          lab: "AMIU Startup Incubator & Venture Demo Arena",
+          coreModules: ["Zero-to-One Product Discovery", "Venture Capital & Term Sheets", "SaaS Growth & Unit Economics", "No-Code & AI Prototyping", "Cross-Border Digital Trade", "Demo Day Pitch Defense"],
+          careers: ["Startup Founder & CEO", "Venture Capital Associate", "Head of Digital Growth"],
+        },
       ]
     }
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900 font-sans antialiased text-slate-100 selection:bg-amber-400 selection:text-slate-950">
+    <div className="min-h-screen flex flex-col bg-slate-900 font-sans antialiased text-white selection:bg-amber-400 selection:text-slate-950">
       <TopUtilityBar />
       
       {/* ================= PRESTIGIOUS TWO-TIER UNIVERSITY HEADER ================= */}
@@ -85,13 +188,14 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Action CTA Button */}
-          <div className="flex items-center space-x-4">
+          {/* Global Search & Action CTA Button */}
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            <GlobalSearch variant="header" />
             <Link
               href="/apply"
               className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-black uppercase tracking-widest text-slate-950 rounded-2xl group bg-gradient-to-r from-amber-400 via-amber-500 to-emerald-400 shadow-xl shadow-amber-500/25 hover:shadow-amber-500/45 transition-all hover:-translate-y-0.5"
             >
-              <span className="relative px-6 py-3 transition-all ease-in duration-100 bg-amber-400 rounded-[14px] group-hover:bg-opacity-0 group-hover:text-white flex items-center gap-2">
+              <span className="relative px-4 sm:px-6 py-3 transition-all ease-in duration-100 bg-amber-400 rounded-[14px] group-hover:bg-opacity-0 group-hover:text-white flex items-center gap-2">
                 Apply for Spring 2026
                 <ArrowRight className="w-4 h-4 text-slate-950 group-hover:text-white transition" />
               </span>
@@ -155,7 +259,7 @@ export default function Home() {
         </div>
       </header>
       
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         {/* Hero Section */}
         <HeroBanner onOpenModal={() => setIsApplyModalOpen(true)} />
 
@@ -347,12 +451,23 @@ export default function Home() {
                           </div>
                         </div>
 
-                        <button
-                          onClick={() => setIsApplyModalOpen(true)}
-                          className="w-full py-3 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
-                        >
-                          Enroll / Fast Application <ArrowRight className="w-4 h-4" />
-                        </button>
+                        <div className="space-y-2.5">
+                          <button
+                            type="button"
+                            onClick={() => setActiveProgram(item)}
+                            className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-200 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-emerald-400/50 transition flex items-center justify-center gap-2"
+                          >
+                            <Layers className="w-3.5 h-3.5 text-emerald-400" />
+                            View Curriculum &amp; Syllabus
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setIsApplyModalOpen(true)}
+                            className="w-full py-3 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-slate-950 bg-amber-400 hover:bg-amber-300 transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
+                          >
+                            Enroll / Fast Application <ArrowRight className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -447,6 +562,97 @@ export default function Home() {
         isOpen={isApplyModalOpen}
         onClose={() => setIsApplyModalOpen(false)}
       />
+
+      {/* Detailed Program Curriculum & Syllabus Dialog */}
+      <NativeDialog
+        isOpen={!!activeProgram}
+        onClose={() => setActiveProgram(null)}
+        titleId="program-syllabus-title"
+        title={activeProgram ? activeProgram.name : "Program Curriculum"}
+        maxWidthClass="max-w-2xl"
+      >
+        {activeProgram && (
+          <div className="space-y-5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <div className="bg-slate-950/80 border border-white/10 rounded-xl p-3">
+                <div className="text-[10px] text-slate-400 uppercase font-bold">Duration</div>
+                <div className="text-white font-bold mt-0.5">{activeProgram.duration}</div>
+              </div>
+              <div className="bg-slate-950/80 border border-white/10 rounded-xl p-3">
+                <div className="text-[10px] text-slate-400 uppercase font-bold">Credits</div>
+                <div className="text-white font-bold mt-0.5">{activeProgram.credits}</div>
+              </div>
+              <div className="bg-slate-950/80 border border-white/10 rounded-xl p-3 col-span-2">
+                <div className="text-[10px] text-slate-400 uppercase font-bold">Tuition &amp; Waiver</div>
+                <div className="text-amber-300 font-bold mt-0.5">{activeProgram.tuition}</div>
+              </div>
+            </div>
+
+            <div className="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-4 flex items-start gap-3">
+              <Cpu className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <div className="text-[10px] font-black uppercase tracking-wider text-emerald-300">
+                  Dedicated Laboratory Facility
+                </div>
+                <div className="text-sm font-bold text-white mt-0.5">{activeProgram.lab}</div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xs font-black uppercase tracking-wider text-slate-300 mb-3">
+                Core OBE Curriculum Modules
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {activeProgram.coreModules.map((mod) => (
+                  <div
+                    key={mod}
+                    className="flex items-center gap-2 bg-slate-800/70 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-white"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                    <span>{mod}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xs font-black uppercase tracking-wider text-slate-300 mb-2.5">
+                Graduate Career Pathways
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {activeProgram.careers.map((career) => (
+                  <span
+                    key={career}
+                    className="text-xs font-bold text-amber-300 bg-amber-400/10 border border-amber-400/25 px-3 py-1.5 rounded-full"
+                  >
+                    {career}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-white/10 flex flex-col sm:flex-row gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveProgram(null);
+                  setIsApplyModalOpen(true);
+                }}
+                className="flex-1 py-3 px-5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider transition flex items-center justify-center gap-2"
+              >
+                Apply for This Program <ArrowRight className="w-4 h-4" />
+              </button>
+              <Link
+                href="/#calculator"
+                onClick={() => setActiveProgram(null)}
+                className="py-3 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-white/15 text-center transition"
+              >
+                Calculate Merit Waiver
+              </Link>
+            </div>
+          </div>
+        )}
+      </NativeDialog>
     </div>
   );
 }

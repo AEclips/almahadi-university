@@ -1,16 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import { 
-  Phone, Mail, GraduationCap, ChevronDown, Search, ArrowRight, Bell, Calendar, 
-  BookOpen, Award, Users, Globe, Sparkles, Shield, Compass, CheckCircle2, ChevronRight 
+  Phone, Mail, GraduationCap, ArrowRight, Bell, 
+  BookOpen, Award, Users, Globe, Sparkles, Shield, Compass, ChevronRight 
 } from "lucide-react";
+import { GlobalSearch } from "./GlobalSearch";
 
 export function TopUtilityBar() {
   return (
     <div className="bg-[#0b1c2d] text-slate-300 text-xs py-2 px-4 sm:px-8 border-b border-white/10 relative z-50">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
         {/* Left Side: Hotline */}
-        <div className="flex items-center space-x-6 text-slate-300 font-medium">
+        <div className="flex items-center space-x-4 text-slate-300 font-medium">
           <span className="flex items-center gap-1.5 hover:text-amber-400 transition cursor-pointer">
             <Phone className="w-3.5 h-3.5 text-amber-400" />
             <span className="text-[11px] uppercase tracking-wider text-slate-400">Admissions 24/7:</span>
@@ -18,13 +19,14 @@ export function TopUtilityBar() {
           </span>
         </div>
 
-        {/* Right Side: Email address aligned to the far right, with quick links */}
-        <div className="flex items-center space-x-6 text-xs font-semibold ml-auto">
-          <span className="flex items-center gap-1.5 text-slate-300 hover:text-amber-400 transition cursor-pointer border-r border-white/10 pr-6">
+        {/* Right Side: Email, Global Search & Student ERP Portal */}
+        <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-4 text-xs font-semibold ml-auto">
+          <span className="hidden lg:flex items-center gap-1.5 text-slate-300 hover:text-amber-400 transition cursor-pointer border-r border-white/10 pr-4">
             <Mail className="w-3.5 h-3.5 text-amber-400" />
             <span className="text-[11px] uppercase tracking-wider text-slate-400">Official Desk:</span>
             <span className="text-amber-300 font-bold">admission@almahadi.edu.bd</span>
           </span>
+          <GlobalSearch variant="utility" />
           <Link href="/portal" className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black px-3.5 py-1 rounded-full text-[11px] shadow-sm hover:brightness-110 transition flex items-center gap-1.5">
             <GraduationCap className="w-3.5 h-3.5" />
             AMIU Student ERP Portal
@@ -194,20 +196,20 @@ export function StatsTicker() {
   ];
 
   return (
-    <section className="bg-white border-b border-slate-200/80 py-12">
+    <section aria-label="University Key Highlights" className="bg-[#081b2c] border-b border-white/10 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (
-            <div key={idx} className="flex items-center space-x-4 md:border-r md:last:border-r-0 border-slate-200/80 md:pr-6 group">
-              <div className="p-3 bg-emerald-50 group-hover:bg-emerald-600 group-hover:text-white text-emerald-700 rounded-2xl transition-all shadow-sm">
-                <Icon className="w-7 h-7 flex-shrink-0" />
+            <div key={idx} className="flex items-center space-x-4 md:border-r md:last:border-r-0 border-white/10 md:pr-6 group">
+              <div className="p-3 bg-emerald-500/15 border border-emerald-500/30 group-hover:bg-amber-400 group-hover:border-amber-400 group-hover:text-slate-950 text-emerald-300 rounded-2xl transition-all shadow-sm">
+                <Icon className="w-6 h-6 flex-shrink-0" />
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-900 group-hover:text-emerald-700 transition">
+                <div className="text-2xl sm:text-3xl font-serif font-bold text-white group-hover:text-amber-300 transition">
                   {s.count}
                 </div>
-                <div className="text-xs sm:text-sm font-semibold text-slate-500">{s.label}</div>
+                <div className="text-xs sm:text-sm font-medium text-slate-300">{s.label}</div>
               </div>
             </div>
           );
