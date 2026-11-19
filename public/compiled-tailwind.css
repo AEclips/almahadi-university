@@ -2899,6 +2899,56 @@ dialog::backdrop {
 
 /* ================= v3.0 KINETIC SCROLL, PARALLAX, SPOTLIGHT & DRAWER ================= */
 
+@property --drawer-backdrop {
+  syntax: "<number>";
+
+  inherits: true;
+
+  initial-value: 0;
+}
+
+@keyframes progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: translateY(-4%) scale(1.08);
+  }
+
+  to {
+    transform: translateY(12%) scale(1.14);
+  }
+}
+
+@keyframes kinetic-enter {
+  from {
+    opacity: 0.08;
+    transform: translateY(28px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-drawer-backdrop {
+  0% {
+    --drawer-backdrop: 1;
+  }
+
+  100% {
+    --drawer-backdrop: 0;
+  }
+}
+
 .scroll-progress-bar {
   display: none;
 }
@@ -2934,16 +2984,6 @@ dialog::backdrop {
   }
 
   @supports (animation-timeline: scroll()) {
-    @keyframes progress-grow {
-      from {
-        transform: scaleX(0);
-      }
-
-      to {
-        transform: scaleX(1);
-      }
-    }
-
     .scroll-progress-bar {
       display: block;
       position: fixed;
@@ -2965,32 +3005,10 @@ dialog::backdrop {
       view-timeline: --hero-parallax;
     }
 
-    @keyframes hero-drift {
-      from {
-        transform: translateY(-4%) scale(1.08);
-      }
-
-      to {
-        transform: translateY(12%) scale(1.14);
-      }
-    }
-
     .hero-parallax-img {
       animation: hero-drift linear both;
       animation-timeline: --hero-parallax;
       animation-range: exit 0% exit 100%;
-    }
-
-    @keyframes kinetic-enter {
-      from {
-        opacity: 0.08;
-        transform: translateY(28px) scale(0.985);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
     }
 
     .kinetic-reveal {
@@ -3087,24 +3105,6 @@ dialog::backdrop {
 }
 
 @supports (animation-timeline: scroll()) {
-  @property --drawer-backdrop {
-    syntax: "<number>";
-
-    inherits: true;
-
-    initial-value: 0;
-  }
-
-  @keyframes fade-drawer-backdrop {
-    0% {
-      --drawer-backdrop: 1;
-    }
-
-    100% {
-      --drawer-backdrop: 0;
-    }
-  }
-
   .nav-drawer {
     timeline-scope: --drawer-fade;
     animation: fade-drawer-backdrop linear both;
