@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { TopUtilityBar, Footer } from "@/components/DiuComponents";
+import { Footer } from "@/components/DiuComponents";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SpotlightCard } from "@/components/KineticEffects";
 import { NativeDialog } from "@/components/NativeDialog";
 import {
-  ArrowLeft,
   Briefcase,
   Globe2,
   Search,
@@ -14,11 +15,11 @@ import {
   Award,
   Building2,
 } from "lucide-react";
-import Link from "next/link";
 
 interface AlumniProfile {
   id: string;
   name: string;
+  portrait: string;
   batch: string;
   degree: string;
   role: string;
@@ -32,6 +33,7 @@ const ALUMNI: AlumniProfile[] = [
   {
     id: "alm-1",
     name: "Zarif Rahman",
+    portrait: "/images/portraits/alm-1.webp",
     batch: "Batch '21",
     degree: "B.Sc. in CSE",
     role: "Senior Research Engineer",
@@ -43,6 +45,7 @@ const ALUMNI: AlumniProfile[] = [
   {
     id: "alm-2",
     name: "Tasnim Tabassum Chowdhury",
+    portrait: "/images/portraits/alm-2.webp",
     batch: "Batch '20",
     degree: "B.Sc. in SWE",
     role: "Principal Cloud Architect",
@@ -54,6 +57,7 @@ const ALUMNI: AlumniProfile[] = [
   {
     id: "alm-3",
     name: "Mahmudul Hasan Sakib",
+    portrait: "/images/portraits/alm-3.webp",
     batch: "Batch '22",
     degree: "B.Sc. in Robotics",
     role: "Autonomous Systems Lead",
@@ -65,6 +69,7 @@ const ALUMNI: AlumniProfile[] = [
   {
     id: "alm-4",
     name: "Farzana Yasmin",
+    portrait: "/images/portraits/alm-4.webp",
     batch: "Batch '19",
     degree: "BBA & FinTech",
     role: "VP of Payment Infrastructure",
@@ -76,6 +81,7 @@ const ALUMNI: AlumniProfile[] = [
   {
     id: "alm-5",
     name: "Rafiqul Islam",
+    portrait: "/images/portraits/alm-5.webp",
     batch: "Batch '23",
     degree: "B.Sc. in AI & DS",
     role: "Staff Machine Learning Engineer",
@@ -87,6 +93,7 @@ const ALUMNI: AlumniProfile[] = [
   {
     id: "alm-6",
     name: "Nafisa Anjum",
+    portrait: "/images/portraits/alm-6.webp",
     batch: "Batch '21",
     degree: "B.Sc. in EEE",
     role: "Silicon Verification Lead",
@@ -122,25 +129,12 @@ export default function AlumniNetworkPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100 font-sans">
-      <TopUtilityBar />
-
-      <header className="sticky top-0 z-40 bg-[#061422]/95 backdrop-blur-2xl border-b border-white/10 py-5 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 text-slate-300 hover:text-white transition">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-xs font-bold uppercase tracking-widest">Back to University Main</span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <img src="/amiu-logo.svg" alt="AMIU Crest" className="w-10 h-10 object-contain" />
-            <span className="font-serif font-black text-lg text-white">AMIU Global Alumni & Careers</span>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-slate-900 text-white font-sans">
+      <SiteHeader />
 
       <main id="main-content" className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
         {/* Editorial Alumni Showcase Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-14 rounded-3xl border border-white/10 bg-slate-800/40 p-6 sm:p-10 shadow-2xl">
+        <div className="kinetic-reveal grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-14 rounded-3xl border border-white/10 bg-slate-800/40 p-6 sm:p-10 shadow-2xl">
           <div className="lg:col-span-6 space-y-4">
             <span className="text-amber-400 font-black text-xs uppercase tracking-[0.25em] bg-amber-400/10 border border-amber-400/30 px-4 py-1.5 rounded-full inline-flex items-center gap-2">
               <Globe2 className="w-3.5 h-3.5" />
@@ -170,7 +164,7 @@ export default function AlumniNetworkPage() {
         </div>
 
         {/* Career Impact Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 kinetic-reveal">
           {[
             { label: "Graduate Placement Within 6 Months", value: "96.4%", icon: Briefcase },
             { label: "Global Hiring Partners Worldwide", value: "450+", icon: Building2 },
@@ -178,18 +172,18 @@ export default function AlumniNetworkPage() {
           ].map((stat) => {
             const Icon = stat.icon;
             return (
-              <div
+              <SpotlightCard
                 key={stat.label}
-                className="bg-slate-800/70 border border-white/10 rounded-3xl p-6 flex items-center gap-5 shadow-xl"
+                className="bg-slate-800/70 border border-white/10 hover:border-amber-400/50 rounded-3xl p-6 flex items-center gap-5 shadow-xl transition"
               >
                 <div className="p-3.5 rounded-2xl bg-amber-400/15 border border-amber-400/30 text-amber-400">
                   <Icon className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-2xl font-black text-white">{stat.value}</div>
-                  <div className="text-xs text-slate-400 font-medium">{stat.label}</div>
+                  <div className="text-2xl font-serif font-bold text-white">{stat.value}</div>
+                  <div className="text-xs text-slate-300 font-medium">{stat.label}</div>
                 </div>
-              </div>
+              </SpotlightCard>
             );
           })}
         </div>
@@ -226,31 +220,30 @@ export default function AlumniNetworkPage() {
         </div>
 
         {/* Alumni Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 kinetic-reveal">
           {filtered.map((alum) => {
             const refCode = referrals[alum.id];
             return (
-              <article
+              <SpotlightCard
                 key={alum.id}
                 className="bg-slate-800/65 border border-white/10 hover:border-amber-400/60 rounded-3xl p-6 shadow-xl flex flex-col justify-between transition hover:-translate-y-1"
               >
                 <div>
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-amber-400 p-0.5">
-                      <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center font-black text-amber-300 text-sm">
-                        {alum.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .slice(0, 2)
-                          .join("")}
-                      </div>
-                    </div>
+                    <img
+                      src={alum.portrait}
+                      alt={`${alum.name}, ${alum.role} at ${alum.company}`}
+                      width={400}
+                      height={400}
+                      loading="lazy"
+                      className="w-16 h-16 rounded-2xl object-cover border border-amber-400/40 shadow-lg flex-shrink-0"
+                    />
                     <span className="text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-full">
                       {alum.batch} • {alum.degree}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-black text-white">{alum.name}</h3>
+                  <h3 className="text-lg font-serif font-bold text-white">{alum.name}</h3>
                   <p className="text-xs font-bold text-amber-400 mt-0.5">{alum.role}</p>
                   <p className="text-xs text-slate-300 font-semibold mt-0.5">
                     {alum.company} • <span className="text-slate-400">{alum.location}</span>
@@ -269,7 +262,7 @@ export default function AlumniNetworkPage() {
                 </div>
 
                 {refCode ? (
-                  <div className="w-full py-2.5 px-3 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-black rounded-xl flex items-center justify-center gap-1.5">
+                  <div className="w-full py-2.5 px-3 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-black rounded-xl flex items-center justify-center gap-1.5 relative z-10">
                     <CheckCircle2 className="w-4 h-4" />
                     Mentorship Requested ({refCode})
                   </div>
@@ -277,13 +270,13 @@ export default function AlumniNetworkPage() {
                   <button
                     type="button"
                     onClick={() => setSelectedAlumni(alum)}
-                    className="w-full py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black rounded-xl transition flex items-center justify-center gap-2"
+                    className="w-full py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black rounded-xl transition flex items-center justify-center gap-2 relative z-10"
                   >
                     <UserCheck className="w-4 h-4" />
                     Request Mentorship / Referral
                   </button>
                 )}
-              </article>
+              </SpotlightCard>
             );
           })}
         </div>

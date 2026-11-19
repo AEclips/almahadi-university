@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AIChatbot } from "@/components/AIChatbot";
+import { KineticFallbackBridge } from "@/components/KineticEffects";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://almahadi-university-gshs.vercel.app"),
@@ -68,6 +69,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-to-main">
           Skip to Main Content
         </a>
+        <KineticFallbackBridge />
         {children}
         <AIChatbot />
       </body>

@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { TopUtilityBar, Footer } from "@/components/DiuComponents";
+import { Footer } from "@/components/DiuComponents";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SpotlightCard } from "@/components/KineticEffects";
 import { NativeDialog } from "@/components/NativeDialog";
 import {
-  ArrowLeft,
   Trees,
   MapPin,
   Bus,
@@ -179,21 +180,8 @@ export default function CampusLifePage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100 font-sans">
-      <TopUtilityBar />
-
-      <header className="sticky top-0 z-40 bg-[#061422]/95 backdrop-blur-2xl border-b border-white/10 py-5 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 text-slate-300 hover:text-white transition">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-xs font-bold uppercase tracking-widest">Back to University Main</span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <img src="/amiu-logo.svg" alt="AMIU Crest" className="w-10 h-10 object-contain" />
-            <span className="font-serif font-black text-lg text-white">AMIU Smart Campus Biosphere</span>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-slate-900 text-white font-sans">
+      <SiteHeader />
 
       <main id="main-content" className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -208,9 +196,9 @@ export default function CampusLifePage() {
         </div>
 
         {/* Facilities Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 kinetic-reveal">
           {highlights.map((h, i) => (
-            <div
+            <SpotlightCard
               key={i}
               className="bg-slate-800/60 border border-white/10 rounded-3xl overflow-hidden hover:border-amber-400/60 transition-all hover:-translate-y-1 shadow-2xl flex flex-col justify-between group"
             >
@@ -244,7 +232,7 @@ export default function CampusLifePage() {
                 </div>
               </div>
 
-              <div className="mx-8 mb-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+              <div className="mx-8 mb-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 relative z-10">
                 <span className="flex items-center gap-1.5 text-slate-300">
                   <MapPin className="w-3.5 h-3.5 text-amber-400" /> Al Mahadi Smart City, Dhaka
                 </span>
@@ -256,14 +244,14 @@ export default function CampusLifePage() {
                   Inspect 3D Facilities &rarr;
                 </button>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
 
         {/* ================= LIVE CAMPUS SHUTTLE TRACKER & ROUTE FINDER ================= */}
         <section
           id="shuttle"
-          className="rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-[#071d2f] via-slate-900 to-[#061523] p-6 sm:p-10 shadow-2xl"
+          className="kinetic-reveal rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-[#071d2f] via-slate-900 to-[#061523] p-6 sm:p-10 shadow-2xl"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-10 pb-8 border-b border-white/10">
             <div className="lg:col-span-7 space-y-3">

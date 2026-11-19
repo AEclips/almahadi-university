@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { TopUtilityBar, Footer } from "@/components/DiuComponents";
+import { Footer } from "@/components/DiuComponents";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SpotlightCard } from "@/components/KineticEffects";
 import { NativeDialog } from "@/components/NativeDialog";
 import {
   Search,
   Mail,
   BookOpen,
   Award,
-  ArrowLeft,
   GraduationCap,
   Building2,
   CalendarClock,
@@ -17,11 +18,11 @@ import {
   CheckCircle2,
   Copy,
 } from "lucide-react";
-import Link from "next/link";
 
 interface FacultyMember {
   id: string;
   name: string;
+  portrait: string;
   designation: string;
   department: string;
   faculty: string;
@@ -49,6 +50,7 @@ const FACULTIES: FacultyMember[] = [
   {
     id: "fac-1",
     name: "Dr. Al Mahadi, PhD",
+    portrait: "/images/portraits/fac-1.webp",
     designation: "Distinguished Professor & Chancellor",
     department: "Computer Science & Engineering",
     faculty: "FSIT",
@@ -61,6 +63,7 @@ const FACULTIES: FacultyMember[] = [
   {
     id: "fac-2",
     name: "Prof. Dr. Sarah Jenkins",
+    portrait: "/images/portraits/fac-2.webp",
     designation: "Professor & Dean",
     department: "Software Engineering",
     faculty: "FSIT",
@@ -73,6 +76,7 @@ const FACULTIES: FacultyMember[] = [
   {
     id: "fac-3",
     name: "Dr. Tariqul Islam",
+    portrait: "/images/portraits/fac-3.webp",
     designation: "Associate Professor & Head of Robotics",
     department: "Robotics & Mechatronics",
     faculty: "SER",
@@ -85,6 +89,7 @@ const FACULTIES: FacultyMember[] = [
   {
     id: "fac-4",
     name: "Prof. David Vance, MBA, PhD",
+    portrait: "/images/portraits/fac-4.webp",
     designation: "Dean of Business Studies",
     department: "Business Administration (BBA)",
     faculty: "FBE",
@@ -97,6 +102,7 @@ const FACULTIES: FacultyMember[] = [
   {
     id: "fac-5",
     name: "Dr. Nusrat Jahan",
+    portrait: "/images/portraits/fac-5.webp",
     designation: "Assistant Professor",
     department: "Artificial Intelligence & Data Science",
     faculty: "FSIT",
@@ -109,6 +115,7 @@ const FACULTIES: FacultyMember[] = [
   {
     id: "fac-6",
     name: "Engr. Farhan Kabir",
+    portrait: "/images/portraits/fac-6.webp",
     designation: "Assistant Professor",
     department: "Electrical & Electronic Engineering",
     faculty: "SER",
@@ -245,24 +252,11 @@ export default function FacultyPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100 font-sans">
-      <TopUtilityBar />
-
-      <header className="sticky top-0 z-40 bg-[#061422]/95 backdrop-blur-2xl border-b border-white/10 py-5 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 text-slate-300 hover:text-white transition">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-xs font-bold uppercase tracking-widest">Back to University Portal</span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <img src="/amiu-logo.svg" alt="AMIU Crest" className="w-10 h-10 object-contain" />
-            <span className="font-serif font-black text-lg text-white">Al Mahadi Faculty & Research</span>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-slate-900 text-white font-sans">
+      <SiteHeader />
 
       <main id="main-content" className="flex-grow py-16 px-4 max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12 rounded-3xl border border-white/10 bg-slate-800/40 p-6 sm:p-10 shadow-2xl">
+        <div className="kinetic-reveal grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12 rounded-3xl border border-white/10 bg-slate-800/40 p-6 sm:p-10 shadow-2xl">
           <div className="lg:col-span-6 space-y-4">
             <span className="text-amber-400 font-black text-xs uppercase tracking-[0.25em] bg-amber-400/10 border border-amber-400/30 px-4 py-1.5 rounded-full inline-block">
               Distinguished Global Academicians
@@ -352,27 +346,30 @@ export default function FacultyPage() {
             </div>
 
             {/* Faculty Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 kinetic-reveal">
               {filteredFaculties.map((f) => {
                 const booked = bookedMeetings[f.id];
                 return (
-                  <div
+                  <SpotlightCard
                     key={f.id}
                     className="bg-slate-800/60 border border-white/10 hover:border-amber-400/60 rounded-3xl p-6 transition-all hover:-translate-y-1 shadow-xl flex flex-col justify-between group"
                   >
                     <div>
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-400 to-emerald-500 p-0.5 shadow-md">
-                          <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center font-bold text-lg text-amber-300">
-                            {f.name.split(" ")[1]?.[0] || "D"}
-                          </div>
-                        </div>
+                        <img
+                          src={f.portrait}
+                          alt={`${f.name}, ${f.designation}`}
+                          width={400}
+                          height={400}
+                          loading="lazy"
+                          className="w-16 h-16 rounded-2xl object-cover border border-amber-400/40 shadow-lg flex-shrink-0"
+                        />
                         <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-950/80 border border-emerald-500/30 px-2.5 py-1 rounded-full">
                           {f.faculty}
                         </span>
                       </div>
 
-                      <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition">
+                      <h3 className="text-lg font-serif font-bold text-white group-hover:text-amber-400 transition">
                         {f.name}
                       </h3>
                       <p className="text-xs text-amber-300/90 font-medium mb-1">{f.designation}</p>
@@ -411,7 +408,7 @@ export default function FacultyPage() {
                       </div>
                     </div>
 
-                    <div className="space-y-2.5">
+                    <div className="space-y-2.5 relative z-10">
                       {booked ? (
                         <div className="w-full py-2.5 px-3 bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[11px] font-black rounded-xl flex items-center justify-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5" />
@@ -436,14 +433,14 @@ export default function FacultyPage() {
                         Email Faculty
                       </a>
                     </div>
-                  </div>
+                  </SpotlightCard>
                 );
               })}
             </div>
           </>
         ) : (
           /* ================= DIGITAL RESEARCH PAPER ARCHIVE ================= */
-          <section className="space-y-8">
+          <section className="space-y-8 kinetic-reveal">
             <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
               <div className="flex flex-wrap gap-2">
                 {["All", "AI & LLMs", "Quantum Systems", "Robotics & IoT", "FinTech"].map((dom) => (
@@ -476,7 +473,7 @@ export default function FacultyPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredPapers.map((paper) => (
-                <article
+                <SpotlightCard
                   key={paper.id}
                   className="bg-slate-800/65 border border-white/10 hover:border-emerald-400/50 rounded-3xl p-7 shadow-xl flex flex-col justify-between transition"
                 >
@@ -489,7 +486,7 @@ export default function FacultyPage() {
                         {paper.year} • {paper.citations} Citations
                       </span>
                     </div>
-                    <h3 className="text-lg font-black text-white leading-snug mb-2">
+                    <h3 className="text-lg font-serif font-bold text-white leading-snug mb-2">
                       {paper.title}
                     </h3>
                     <p className="text-xs text-amber-300 font-semibold mb-1">{paper.authors}</p>
@@ -502,12 +499,12 @@ export default function FacultyPage() {
                   <button
                     type="button"
                     onClick={() => setActivePaper(paper)}
-                    className="w-full py-3 rounded-xl bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-emerald-300 border border-emerald-500/30 font-black text-xs uppercase tracking-wider transition flex items-center justify-center gap-2"
+                    className="w-full py-3 rounded-xl bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-emerald-300 border border-emerald-500/30 font-black text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 relative z-10"
                   >
                     <FileText className="w-4 h-4" />
-                    Read Abstract & Cite (BibTeX)
+                    Read Abstract &amp; Cite (BibTeX)
                   </button>
-                </article>
+                </SpotlightCard>
               ))}
             </div>
           </section>

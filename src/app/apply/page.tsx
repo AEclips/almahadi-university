@@ -2,9 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { TopUtilityBar, Footer } from "@/components/DiuComponents";
+import { Footer } from "@/components/DiuComponents";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SpotlightCard } from "@/components/KineticEffects";
 import { 
-  ArrowLeft, Send, CheckCircle2, ShieldCheck, User, Mail, Phone, BookOpen, 
+  Send, CheckCircle2, ShieldCheck, User, Mail, Phone, BookOpen, 
   Award, GraduationCap, MapPin, Calendar, Clock, Sparkles, Loader2 
 } from "lucide-react";
 
@@ -50,24 +52,7 @@ export default function ApplyPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-900 text-white font-sans selection:bg-amber-400 selection:text-slate-950">
-      <TopUtilityBar />
-
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-[#061422]/95 backdrop-blur-2xl border-b border-white/10 py-5 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 text-slate-300 hover:text-white transition">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-xs font-bold uppercase tracking-widest">Back to University Main</span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <img src="/amiu-logo.svg" alt="AMIU Crest" className="w-10 h-10 object-contain" />
-            <div>
-              <span className="font-serif font-black text-lg text-white block leading-none">AL MAHADI</span>
-              <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider block mt-0.5">Admissions Portal</span>
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="main-content" className="flex-grow py-16 px-4 max-w-5xl mx-auto w-full">
         {submitted ? (
@@ -175,7 +160,7 @@ export default function ApplyPage() {
             </div>
 
             {/* Right Application Form */}
-            <div className="lg:col-span-7 bg-slate-800/80 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+            <SpotlightCard className="lg:col-span-7 bg-slate-800/80 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl kinetic-reveal">
               <h2 className="text-xl font-black text-white mb-6 pb-4 border-b border-white/10">
                 Official Admission Application Form
               </h2>
@@ -309,7 +294,7 @@ export default function ApplyPage() {
                   )}
                 </button>
               </form>
-            </div>
+            </SpotlightCard>
           </div>
         )}
       </main>

@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { TopUtilityBar, Footer } from "@/components/DiuComponents";
+import { Footer } from "@/components/DiuComponents";
+import { SiteHeader } from "@/components/SiteHeader";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { NativeDialog } from "@/components/NativeDialog";
 import {
   CheckCircle2,
-  ArrowLeft,
   Download,
   ShieldCheck,
   Award,
@@ -17,7 +17,6 @@ import {
   Receipt,
   Sparkles,
 } from "lucide-react";
-import Link from "next/link";
 
 interface CourseItem {
   code: string;
@@ -196,24 +195,7 @@ export default function StudentPortalDemo() {
 
   return (
     <div className="min-h-screen flex flex-col erp-surface font-sans transition-colors duration-200">
-      <TopUtilityBar />
-
-      <header className="sticky top-0 z-40 bg-[#061422]/95 backdrop-blur-2xl border-b border-white/10 py-4 px-4 sm:px-6 text-white">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-          <Link href="/" className="flex items-center gap-2.5 text-slate-300 hover:text-white transition">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-xs font-bold uppercase tracking-widest">Back to University Main</span>
-          </Link>
-
-          <div className="flex items-center gap-4">
-            <ThemeToggle onResolvedThemeChange={setResolvedTheme} />
-            <div className="hidden md:flex items-center gap-2.5">
-              <img src="/amiu-logo.svg" alt="AMIU Crest" className="w-9 h-9 object-contain" />
-              <span className="font-serif font-black text-base text-white">AMIU Smart ERP</span>
-            </div>
-          </div>
-        </div>
-      </header>
+      <SiteHeader rightExtra={<ThemeToggle onResolvedThemeChange={setResolvedTheme} />} />
 
       <main id="main-content" className="flex-grow py-12 px-4 max-w-7xl mx-auto w-full">
         {/* Student Profile Card */}

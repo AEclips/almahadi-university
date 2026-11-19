@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import { 
-  Phone, Mail, GraduationCap, ArrowRight, Bell, 
-  BookOpen, Award, Users, Globe, Sparkles, Shield, Compass, ChevronRight 
+  Phone, Mail, GraduationCap, ArrowRight, 
+  BookOpen, Award, Users, Globe, Sparkles, Shield, Compass 
 } from "lucide-react";
 import { GlobalSearch } from "./GlobalSearch";
+import { SpotlightCard, AnimatedCounter } from "./KineticEffects";
 
 export function TopUtilityBar() {
   return (
@@ -39,124 +40,87 @@ export function TopUtilityBar() {
 
 export function HeroBanner({ onOpenModal }: { onOpenModal?: () => void }) {
   return (
-    <section className="relative min-h-[680px] flex flex-col justify-center bg-[#061523] text-white pt-24 pb-16 px-4 overflow-hidden border-b border-emerald-950/40">
-      {/* Editorial Hero Campus Photograph (LCP Priority) */}
+    <section className="hero-parallax-wrapper relative min-h-[760px] flex flex-col justify-between bg-[#040d17] text-white pt-16 sm:pt-20 pb-10 px-4 border-b border-white/10">
+      {/* Full-Bleed Parallax Campus Photograph (LCP Priority) */}
       <img
         src="/images/hero-campus.webp"
         alt="Al Mahadi International University lakeside sandstone and glass campus at twilight"
         width={1600}
         height={893}
         fetchPriority="high"
-        className="absolute inset-0 w-full h-full object-cover object-center opacity-60 pointer-events-none select-none"
+        className="hero-parallax-img absolute inset-0 w-full h-full object-cover object-center opacity-75 pointer-events-none select-none"
       />
-      {/* Architectural Navy Atmospheric Scrims for High-Contrast Typography */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#061523]/95 via-[#071927]/80 to-[#061523]/45 pointer-events-none"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-[#061523] via-transparent to-[#061523]/45 pointer-events-none"></div>
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute -bottom-20 left-1/3 w-[600px] h-64 bg-emerald-900/30 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Sculpted Editorial Dark Vignette Scrims (Keeps Right-Side Architecture Visible) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#040d17]/95 via-[#061523]/60 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#040d17] via-transparent to-[#040d17]/40 pointer-events-none" />
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
-        {/* Left Hero Content */}
-        <div className="lg:col-span-7 space-y-8">
-          <div className="inline-flex items-center gap-2 bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider backdrop-blur-md shadow-lg shadow-emerald-950/50">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-            Pioneering Higher Education for the AI & Quantum Era
+      {/* Main Left Editorial Focus */}
+      <div className="max-w-7xl mx-auto relative z-10 w-full my-auto py-8">
+        <div className="max-w-2xl space-y-7">
+          <div className="inline-flex items-center gap-2 bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider backdrop-blur-md shadow-lg">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            Spring 2026 Admissions Open &bull; Ashulia Smart City
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-[66px] font-serif font-bold tracking-tight leading-[1.06]">
+          <h1 className="text-5xl sm:text-6xl lg:text-[74px] font-serif font-bold tracking-tight leading-[1.03] drop-shadow-xl">
             Architecting the <br />
             <span className="text-amber-300 italic font-semibold">
               Leaders of Tomorrow
             </span>
           </h1>
 
-          <p className="text-slate-200 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-            Welcome to <strong className="text-white font-semibold">Al Mahadi International University (AMIU)</strong>. Where permanent smart green architecture converges with AI supercomputing labs, international dual-degree pathways, and translational research.
+          <p className="text-slate-100 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+            Welcome to <strong className="text-white font-semibold">Al Mahadi International University (AMIU)</strong>. Permanent green smart architecture meets AI supercomputing labs, international dual-degree pathways, and translational research.
           </p>
 
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-wrap gap-3.5 pt-1">
             <Link
               href="/apply"
-              className="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black px-8 py-4 rounded-2xl shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30 hover:-translate-y-0.5 transition-all flex items-center gap-2 text-sm uppercase tracking-wider"
+              className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black px-7 py-4 rounded-2xl shadow-xl shadow-amber-500/25 hover:-translate-y-0.5 transition-all flex items-center gap-2 text-xs sm:text-sm uppercase tracking-wider"
             >
-              Spring 2026 Admissions Open
+              Apply for Spring 2026
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="#calculator"
-              className="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold px-7 py-4 rounded-2xl transition backdrop-blur-md hover:-translate-y-0.5 text-sm flex items-center gap-2"
+              href="#campus-tour"
+              className="bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-6 py-4 rounded-2xl transition backdrop-blur-md hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-2"
             >
-              Calculate Scholarship Waiver
+              Tour the 150-Acre Campus
             </a>
+            {onOpenModal && (
+              <button
+                type="button"
+                onClick={onOpenModal}
+                className="bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-200 font-bold px-5 py-4 rounded-2xl transition backdrop-blur-md hover:-translate-y-0.5 text-xs sm:text-sm"
+              >
+                Fast Track Inquiry
+              </button>
+            )}
           </div>
 
-          {/* Quick Credibility Trust Badges */}
-          <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-6 text-slate-300 text-xs">
+          {/* Subtle Architectural Trust Metrics */}
+          <div className="pt-6 border-t border-white/15 grid grid-cols-3 gap-6 text-slate-200 text-xs max-w-lg">
             <div>
-              <div className="text-xl sm:text-2xl font-black text-white">96.4%</div>
-              <div className="text-slate-400 mt-0.5">Graduate Placement</div>
-            </div>
-            <div>
-              <div className="text-xl sm:text-2xl font-black text-white">120+</div>
-              <div className="text-slate-400 mt-0.5">Global Partner Varsities</div>
+              <div className="text-xl sm:text-2xl font-serif font-bold text-white">96.4%</div>
+              <div className="text-slate-300 mt-0.5">Graduate Placement</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-black text-amber-400">100%</div>
-              <div className="text-slate-400 mt-0.5">Merit Scholarships</div>
+              <div className="text-xl sm:text-2xl font-serif font-bold text-white">120+</div>
+              <div className="text-slate-300 mt-0.5">Global Alliances</div>
             </div>
-          </div>
-        </div>
-
-        {/* Right Glassmorphic Highlights Box */}
-        <div className="lg:col-span-5 relative">
-          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-amber-500 rounded-3xl blur-xl opacity-25"></div>
-          
-          <div className="relative bg-[#0d2235]/85 border border-white/15 backdrop-blur-2xl rounded-3xl p-7 shadow-2xl space-y-6">
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
-              <h3 className="text-base font-extrabold flex items-center gap-2 text-emerald-300">
-                <Bell className="w-4 h-4 text-amber-400" />
-                Live Circulars & Updates
-              </h3>
-              <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2.5 py-0.5 rounded-full uppercase">
-                Active
-              </span>
-            </div>
-
-            <div className="space-y-3.5">
-              {[
-                { tag: "Scholarship", title: "100% Full-Ride Merit Waivers Open for Golden GPA 5.0", date: "Nov 09" },
-                { tag: "Admissions", title: "Spring 2026 Direct Entrance Exam & Spot Admission", date: "Nov 07" },
-                { tag: "Robotics", title: "AMIU Robotics Lab Unveils Autonomous Drone Platform", date: "Nov 03" },
-                { tag: "Convocation", title: "Registration for Annual Grand Convocation Opened", date: "Oct 29" },
-              ].map((item, idx) => (
-                <div key={idx} className="bg-white/5 hover:bg-white/10 p-3.5 rounded-xl border border-white/10 transition-all cursor-pointer group">
-                  <div className="flex items-center justify-between text-xs mb-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">
-                      {item.tag}
-                    </span>
-                    <span className="text-slate-400 text-[11px]">{item.date}</span>
-                  </div>
-                  <h4 className="text-sm font-semibold text-slate-100 group-hover:text-amber-300 transition leading-snug">
-                    {item.title}
-                  </h4>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-2">
-              <a href="#notice" className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center justify-center gap-1">
-                View All Circulars <ChevronRight className="w-3.5 h-3.5" />
-              </a>
+            <div>
+              <div className="text-xl sm:text-2xl font-serif font-bold text-amber-300">Up to 100%</div>
+              <div className="text-slate-300 mt-0.5">Merit Waivers</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* World-Class University Audience Wayfinding Bar (MIT / Harvard Pattern) */}
-      <div className="max-w-7xl mx-auto w-full relative z-10 mt-10 pt-6 border-t border-white/15">
+      {/* Pinned Bottom Audience Wayfinding Bar */}
+      <div className="max-w-7xl mx-auto w-full relative z-10 mt-8 pt-6 border-t border-white/15">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-300">
+          <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-300 flex-shrink-0">
             Pathways For
           </span>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-grow lg:max-w-4xl">
@@ -166,19 +130,23 @@ export function HeroBanner({ onOpenModal }: { onOpenModal?: () => void }) {
               { label: "Faculty & Research", sub: "Office Hours & Papers", href: "/faculty" },
               { label: "Global Alumni", sub: "Referrals & Placement", href: "/alumni" },
             ].map((path) => (
-              <Link
+              <SpotlightCard
                 key={path.href}
-                href={path.href}
-                className="group rounded-2xl bg-[#071523]/75 hover:bg-white/15 backdrop-blur-md border border-white/15 hover:border-amber-400/60 px-4 py-3 transition flex items-center justify-between gap-2"
+                className="rounded-2xl bg-[#071523]/80 hover:bg-white/15 backdrop-blur-md border border-white/15 hover:border-amber-400/60 transition"
               >
-                <div>
-                  <div className="text-xs font-bold text-white group-hover:text-amber-300 transition">
-                    {path.label}
+                <Link
+                  href={path.href}
+                  className="group px-4 py-3 flex items-center justify-between gap-2 relative z-10"
+                >
+                  <div>
+                    <div className="text-xs font-bold text-white group-hover:text-amber-300 transition">
+                      {path.label}
+                    </div>
+                    <div className="text-[10px] text-slate-300 mt-0.5">{path.sub}</div>
                   </div>
-                  <div className="text-[10px] text-slate-300 mt-0.5">{path.sub}</div>
-                </div>
-                <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 transition flex-shrink-0" />
-              </Link>
+                  <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-0.5 transition flex-shrink-0" />
+                </Link>
+              </SpotlightCard>
             ))}
           </div>
         </div>
@@ -189,29 +157,36 @@ export function HeroBanner({ onOpenModal }: { onOpenModal?: () => void }) {
 
 export function StatsTicker() {
   const stats = [
-    { count: "28,000+", label: "Enrolled Visionary Students", icon: Users },
-    { count: "120+", label: "Global Academic Alliances", icon: Globe },
-    { count: "35+", label: "Accredited Degree Programs", icon: BookOpen },
-    { count: "#1", label: "Smart Green Campus in Dhaka", icon: Award },
+    { target: 28000, suffix: "+", label: "Enrolled Visionary Students", icon: Users },
+    { target: 120, suffix: "+", label: "Global Academic Alliances", icon: Globe },
+    { target: 35, suffix: "+", label: "Accredited Degree Programs", icon: BookOpen },
+    { staticText: "#1", label: "Smart Green Campus in Dhaka", icon: Award },
   ];
 
   return (
-    <section aria-label="University Key Highlights" className="bg-[#081b2c] border-b border-white/10 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section aria-label="University Key Highlights" className="bg-[#081b2c] border-b border-white/10 py-10 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (
-            <div key={idx} className="flex items-center space-x-4 md:border-r md:last:border-r-0 border-white/10 md:pr-6 group">
-              <div className="p-3 bg-emerald-500/15 border border-emerald-500/30 group-hover:bg-amber-400 group-hover:border-amber-400 group-hover:text-slate-950 text-emerald-300 rounded-2xl transition-all shadow-sm">
-                <Icon className="w-6 h-6 flex-shrink-0" />
+            <SpotlightCard
+              key={idx}
+              className="rounded-2xl bg-slate-900/65 border border-white/10 hover:border-amber-400/40 p-5 flex items-center gap-4 group transition"
+            >
+              <div className="p-3 bg-emerald-500/15 border border-emerald-500/30 group-hover:bg-amber-400 group-hover:border-amber-400 group-hover:text-slate-950 text-emerald-300 rounded-2xl transition-all shadow-sm flex-shrink-0">
+                <Icon className="w-6 h-6" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-2xl sm:text-3xl font-serif font-bold text-white group-hover:text-amber-300 transition">
-                  {s.count}
+                  {"staticText" in s && s.staticText ? (
+                    s.staticText
+                  ) : (
+                    <AnimatedCounter target={s.target!} suffix={s.suffix} />
+                  )}
                 </div>
-                <div className="text-xs sm:text-sm font-medium text-slate-300">{s.label}</div>
+                <div className="text-xs font-medium text-slate-300 mt-0.5">{s.label}</div>
               </div>
-            </div>
+            </SpotlightCard>
           );
         })}
       </div>
