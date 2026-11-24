@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Calendar, MapPin, Users, Trophy, ChevronLeft, ChevronRight, Sparkles, CheckCircle2, Ticket } from "lucide-react";
 import { NativeDialog } from "./NativeDialog";
+import { SpotlightCard } from "./KineticEffects";
 
 interface UniversityEvent {
   id: string;
@@ -281,8 +282,9 @@ export function EventsCarouselSection() {
         >
           {visibleEvents.map((ev, idx) => {
             const bookedPass = reservedPassIds[ev.id];
+            const fillPct = Math.max(15, Math.min(92, Math.round((ev.seatsLeft / 350) * 100)));
             return (
-              <article
+              <SpotlightCard
                 key={ev.id}
                 role="group"
                 aria-roledescription="slide"
@@ -320,7 +322,7 @@ export function EventsCarouselSection() {
                       {ev.description}
                     </p>
 
-                    <div className="space-y-2 text-xs text-slate-400 bg-slate-900/80 rounded-2xl p-4 border border-white/5 mb-6">
+                    <div className="space-y-2.5 text-xs text-slate-400 bg-slate-900/80 rounded-2xl p-4 border border-white/5 mb-6">
                       <div className="flex items-center gap-2 text-slate-200 font-semibold">
                         <Calendar className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
                         <span>
@@ -331,15 +333,25 @@ export function EventsCarouselSection() {
                         <MapPin className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                         <span>{ev.venue}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
-                        <span>{ev.seatsLeft} Public &amp; Student Seats Open</span>
+                      <div className="space-y-1.5 pt-1">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="flex items-center gap-1.5 text-sky-300 font-semibold">
+                            <Users className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
+                            {ev.seatsLeft} Public &amp; Student Seats Open
+                          </span>
+                        </div>
+                        <div className="h-1.5 rounded-full bg-slate-950 overflow-hidden border border-white/5">
+                          <div
+                            className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-amber-400"
+                            style={{ width: `${fillPct}%` }}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="px-7 pb-7">
+                <div className="px-7 pb-7 relative z-10">
                   {bookedPass ? (
                     <div className="w-full py-3 px-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-black flex items-center justify-center gap-2">
                       <CheckCircle2 className="w-4 h-4" />
@@ -356,7 +368,7 @@ export function EventsCarouselSection() {
                     </button>
                   )}
                 </div>
-              </article>
+              </SpotlightCard>
             );
           })}
         </div>

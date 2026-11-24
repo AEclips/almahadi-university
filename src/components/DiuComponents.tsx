@@ -1,8 +1,10 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import { 
   Phone, Mail, GraduationCap, ArrowRight, 
-  BookOpen, Award, Users, Globe, Sparkles, Shield, Compass 
+  BookOpen, Award, Users, Globe, Sparkles, Shield, Compass, CheckCircle2 
 } from "lucide-react";
 import { GlobalSearch } from "./GlobalSearch";
 import { SpotlightCard, AnimatedCounter } from "./KineticEffects";
@@ -195,14 +197,24 @@ export function StatsTicker() {
 }
 
 export function Footer() {
+  const [dispatchEmail, setDispatchEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleDispatchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!dispatchEmail.trim()) return;
+    setSubscribed(true);
+    setDispatchEmail("");
+  };
+
   return (
-    <footer className="bg-[#071927] text-slate-300 pt-20 pb-10 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 border-b border-white/10">
+    <footer className="bg-[#061422] text-slate-300 pt-20 pb-10 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-16 border-b border-white/10">
         <div className="space-y-5">
           <div className="flex items-center gap-3.5">
             <img src="/amiu-logo.svg" alt="AMIU Crest" className="w-12 h-12 object-contain" />
             <div>
-              <span className="font-black text-white text-lg tracking-tight block leading-none">
+              <span className="font-serif font-black text-white text-xl tracking-tight block leading-none">
                 AL MAHADI
               </span>
               <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mt-1">
@@ -210,27 +222,37 @@ export function Footer() {
               </span>
             </div>
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed font-normal">
+          <p className="text-xs text-slate-300 leading-relaxed font-normal">
             Al Mahadi Smart City, Dhaka, Bangladesh. An autonomous institution dedicated to academic distinction, high-impact scientific research, and technological leadership.
           </p>
+          <div className="flex flex-wrap gap-2 pt-1">
+            {["UGC Approved", "BAETE / ABET Aligned", "Zero-Carbon Campus"].map((badge) => (
+              <span
+                key={badge}
+                className="text-[10px] font-bold text-emerald-300 bg-emerald-500/10 border border-emerald-500/25 px-2.5 py-1 rounded-full"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div>
-          <h4 className="text-white text-xs font-black mb-5 uppercase tracking-widest text-amber-400">
-            Faculties & Schools
+          <h4 className="text-xs font-black mb-5 uppercase tracking-widest text-amber-400">
+            Faculties &amp; Schools
           </h4>
           <ul className="space-y-2.5 text-xs font-medium">
-            <li><Link href="/faculty" className="hover:text-amber-300 transition">Faculty of Science & IT</Link></li>
-            <li><Link href="/faculty" className="hover:text-amber-300 transition">School of Engineering & Robotics</Link></li>
-            <li><Link href="/faculty" className="hover:text-amber-300 transition">Faculty of Business & Entrepreneurship</Link></li>
-            <li><Link href="/faculty" className="hover:text-amber-300 transition">School of Health & Allied Sciences</Link></li>
-            <li><Link href="/faculty" className="hover:text-amber-300 transition">Faculty of Humanities & Social Sciences</Link></li>
+            <li><Link href="/faculty" className="hover:text-amber-300 transition">Faculty of Science &amp; IT</Link></li>
+            <li><Link href="/faculty" className="hover:text-amber-300 transition">School of Engineering &amp; Robotics</Link></li>
+            <li><Link href="/faculty" className="hover:text-amber-300 transition">Faculty of Business &amp; Entrepreneurship</Link></li>
+            <li><Link href="/faculty" className="hover:text-amber-300 transition">School of Health &amp; Allied Sciences</Link></li>
+            <li><Link href="/faculty" className="hover:text-amber-300 transition">Faculty of Humanities &amp; Social Sciences</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-white text-xs font-black mb-5 uppercase tracking-widest text-amber-400">
-            Portals & Resources
+          <h4 className="text-xs font-black mb-5 uppercase tracking-widest text-amber-400">
+            Portals &amp; Resources
           </h4>
           <ul className="space-y-2.5 text-xs font-medium">
             <li><Link href="/portal" className="hover:text-amber-300 transition">AMIU Smart ERP Student Portal</Link></li>
@@ -243,27 +265,58 @@ export function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="text-white text-xs font-black mb-5 uppercase tracking-widest text-amber-400">
-            Campus Headquarters
-          </h4>
-          <p className="text-xs text-slate-400 leading-relaxed font-normal">
-            Al Mahadi Smart City, Birulia Road, Dhaka.<br /><br />
-            <strong className="text-slate-200">Admissions Desk:</strong> +880 9612-777999<br />
-            <strong className="text-slate-200">Email:</strong> registrar@almahadi.edu.bd<br />
-            <strong className="text-slate-200">Helpline:</strong> 01999888777
-          </p>
+        <div className="space-y-5">
+          <div>
+            <h4 className="text-xs font-black mb-4 uppercase tracking-widest text-amber-400">
+              Campus Headquarters &amp; Dispatch
+            </h4>
+            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+              Al Mahadi Smart City, Birulia Road, Dhaka.<br />
+              <strong className="text-white">Admissions:</strong> +880 9612-777999<br />
+              <strong className="text-white">Registrar:</strong> registrar@almahadi.edu.bd
+            </p>
+          </div>
+
+          <div className="bg-slate-900/70 border border-white/10 rounded-2xl p-4 space-y-2.5">
+            <div className="text-[11px] font-bold uppercase tracking-wider text-amber-300">
+              Campus Dispatch Newsletter
+            </div>
+            {subscribed ? (
+              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-300 py-1">
+                <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                <span>Subscribed to AMIU Campus Dispatch</span>
+              </div>
+            ) : (
+              <form onSubmit={handleDispatchSubmit} className="flex gap-2">
+                <input
+                  type="email"
+                  required
+                  value={dispatchEmail}
+                  onChange={(e) => setDispatchEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  aria-label="Subscribe to Campus Dispatch newsletter"
+                  className="min-w-0 flex-1 bg-slate-950 border border-white/15 rounded-xl px-3 py-2 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                />
+                <button
+                  type="submit"
+                  className="px-3.5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[11px] uppercase tracking-wider transition flex-shrink-0"
+                >
+                  Join
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+      <div className="max-w-7xl mx-auto px-4 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
         <div>
-          © 2026 Al Mahadi International University (AMIU). Built with clean-room architecture.
+          &copy; 2026 Al Mahadi International University (AMIU). Built with clean-room architecture.
         </div>
         <div className="flex flex-wrap gap-6">
-          <Link href="/faculty" className="hover:text-slate-300 transition">Academic Charter</Link>
-          <Link href="/campus#shuttle" className="hover:text-slate-300 transition">Campus Safety &amp; Transit</Link>
-          <Link href="/portal" className="hover:text-slate-300 transition">Student ERP Security</Link>
+          <Link href="/faculty" className="hover:text-white transition">Academic Charter</Link>
+          <Link href="/campus#shuttle" className="hover:text-white transition">Campus Safety &amp; Transit</Link>
+          <Link href="/portal" className="hover:text-white transition">Student ERP Security</Link>
         </div>
       </div>
     </footer>

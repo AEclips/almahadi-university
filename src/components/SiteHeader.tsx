@@ -142,6 +142,10 @@ export function SiteHeader({ rightExtra }: { rightExtra?: React.ReactNode }) {
               <Mail className="w-3 h-3 text-amber-400 flex-shrink-0" />
               <span className="text-amber-300 font-semibold">admission@almahadi.edu.bd</span>
             </span>
+            <span className="hidden xl:inline-flex items-center gap-1.5 text-emerald-300 border-l border-white/10 pl-4 whitespace-nowrap">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+              Ashulia Campus &bull; 28 Shuttles Active
+            </span>
           </div>
 
           <div className="flex items-center gap-3 ml-auto">
@@ -191,7 +195,7 @@ export function SiteHeader({ rightExtra }: { rightExtra?: React.ReactNode }) {
                   key={item.label}
                   href={item.href}
                   aria-current={isCurrent ? "page" : undefined}
-                  className={`relative px-3 py-2 rounded-xl text-xs font-bold tracking-wide transition ${
+                  className={`relative whitespace-nowrap px-3 py-2 rounded-xl text-xs font-bold tracking-wide transition ${
                     isCurrent
                       ? "text-white bg-white/10"
                       : "text-slate-300 hover:text-white hover:bg-white/5"
@@ -216,7 +220,7 @@ export function SiteHeader({ rightExtra }: { rightExtra?: React.ReactNode }) {
             <Link
               href="/apply"
               aria-current={pathname === "/apply" ? "page" : undefined}
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-amber-400/20"
+              className="hidden sm:inline-flex whitespace-nowrap items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-amber-400/20"
             >
               <span>Apply 2026</span>
               <ArrowRight className="w-3.5 h-3.5" />

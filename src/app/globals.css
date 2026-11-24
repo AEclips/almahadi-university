@@ -378,3 +378,46 @@ dialog::backdrop {
     scroll-timeline: --drawer-fade x;
   }
 }
+
+
+/* Tactile dark-luxury range slider */
+.amiu-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.14);
+  outline: none;
+  cursor: pointer;
+}
+
+.amiu-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #fbbf24;
+  border: 2px solid #040e18;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+  transition: transform 0.15s ease;
+}
+
+.amiu-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+.amiu-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #fbbf24;
+  border: 2px solid #040e18;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+}
+
+.amiu-slider:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 4px;
+}

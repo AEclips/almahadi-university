@@ -253,7 +253,7 @@ export function GlobalSearch({ variant = "header" }: { variant?: "header" | "uti
           type="button"
           onClick={() => setIsOpen(true)}
           aria-label="Open global university search"
-          className="hidden md:flex items-center justify-between gap-3 w-56 lg:w-72 px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 hover:border-amber-400/60 text-left text-xs text-slate-300 transition shadow-inner group"
+          className="hidden md:flex whitespace-nowrap items-center justify-between gap-2.5 w-44 lg:w-48 xl:w-64 px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 hover:border-amber-400/60 text-left text-xs text-slate-300 transition shadow-inner group"
         >
           <span className="flex items-center gap-2 truncate">
             <Search className="w-4 h-4 text-amber-400 flex-shrink-0" />

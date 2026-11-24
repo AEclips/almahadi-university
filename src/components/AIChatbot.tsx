@@ -223,7 +223,7 @@ export function AIChatbot() {
 
             {isTyping && (
               <div className="flex items-center gap-2 text-slate-400 text-[11px] pl-9">
-                <span className="inline-block w-1.5 h-1.5 bg-amber-400 rounded-full animate-bounce" />
+                <span className="inline-block w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
                 <span>AMIU AI is thinking...</span>
               </div>
             )}
@@ -269,23 +269,30 @@ export function AIChatbot() {
         </section>
       )}
 
-      {/* Floating Toggle Button */}
+      {/* Floating Obsidian Glass Toggle Pill */}
       <button
         type="button"
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? "Close AMIU AI Chat" : "Open AMIU AI Admissions Chat"}
-        className="group relative flex items-center gap-2.5 px-5 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-emerald-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow-2xl shadow-amber-500/30 hover:-translate-y-0.5 transition-all"
+        className="group relative flex items-center gap-2.5 pl-2.5 pr-4 py-2 rounded-full bg-[#071927]/95 hover:bg-[#0b2336] border border-amber-400/50 hover:border-amber-300 text-white font-bold text-xs tracking-wide shadow-[0_14px_34px_rgba(0,0,0,0.65)] backdrop-blur-xl hover:-translate-y-0.5 transition-all"
       >
         {isOpen ? (
           <>
-            <X className="w-4 h-4" />
+            <span className="p-1.5 rounded-full bg-white/10 text-amber-300">
+              <X className="w-3.5 h-3.5" />
+            </span>
             <span>Close AI Guide</span>
           </>
         ) : (
           <>
-            <MessageSquare className="w-4 h-4" />
+            <span className="p-1.5 rounded-full bg-amber-400 text-slate-950 shadow-sm">
+              <MessageSquare className="w-3.5 h-3.5" />
+            </span>
             <span>Ask AI Advisor</span>
-            <span className="w-2 h-2 rounded-full bg-slate-950 animate-ping" />
+            <span
+              aria-hidden="true"
+              className="w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-emerald-400/30"
+            />
           </>
         )}
       </button>
